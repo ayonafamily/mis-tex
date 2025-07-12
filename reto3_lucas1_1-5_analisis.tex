@@ -1,0 +1,232 @@
+
+\documentclass[a4paper,12pt]{article}
+\usepackage{polyglossia}
+\setdefaultlanguage{spanish}
+\setotherlanguage{greek}
+\newfontfamily\greekfont{FreeSerif}
+\usepackage{fontspec}
+\setmainfont{Arial}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{xcolor}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{colortbl}
+\usepackage{caption}
+\usepackage{lipsum}
+\usepackage{titling}
+
+% Definiciones para tablas
+\definecolor{verdelimon}{RGB}{154,205,50}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+
+
+\begin{document}
+	
+\input{caratula}	
+	
+\tableofcontents
+\newpage
+
+	
+%%% Versiculo 1	
+\section{Texto: \textgreek{Ἐπειδήπερ πολλοὶ ἐπεχείρησαν ἀνατάξασθαι διήγησιν περὶ τῶν πεπληροφορημένων ἐν ἡμῖν πραγμάτων}}
+
+\arrayrulecolor{verdelimon}
+\begin{tabularx}{\textwidth}{|Y|Y|Y|}
+\rowcolor{verdelimon}
+\textcolor{white}{\textbf{Función sintáctica}} & \textcolor{white}{\textbf{Texto griego}} & \textcolor{white}{\textbf{Morfología}} \\
+\hline
+Conjunción causal enfática & \textgreek{Ἐπειδήπερ} & Conjunción subordinante causal \\
+\hline
+Sujeto del verbo principal & \textgreek{πολλοὶ} & Adjetivo sustantivado, nominativo masculino plural, 1ª declinación \\
+\hline
+Verbo principal & \textgreek{ἐπεχείρησαν} & Aoristo indicativo activo, 3ª persona plural de \textgreek{ἐπιχειρέω} \\
+\hline
+Infinitivo como complemento & \textgreek{ἀνατάξασθαι} & Infinitivo aoristo medio de \textgreek{ἀνατάσσω} \\
+\hline
+Complemento directo & \textgreek{διήγησιν} & Sustantivo femenino singular acusativo, 3ª declinación \\
+\hline
+Preposición + genitivo & \textgreek{περὶ τῶν πεπληροφορημένων} & \textbf{περὶ} rige genitivo; participio perfecto pasivo masc./neutro genitivo plural \\
+\hline
+Circunstancial de lugar & \textgreek{ἐν ἡμῖν} & \textbf{ἐν} rige dativo; pronombre personal 1ª persona plural dativo \\
+\hline
+Complemento del participio & \textgreek{πραγμάτων} & Sustantivo neutro plural genitivo, 3ª declinación \\
+\hline
+\end{tabularx}
+\arrayrulecolor{black}
+
+\vspace{0.5cm}
+\arrayrulecolor{verdelimon}
+\begin{tabularx}{\textwidth}{|Y|}
+\hline
+\textbf{Traducción literal:} Puesto que muchos intentaron ordenar un relato sobre las cosas plenamente confirmadas entre nosotros. \\
+\hline
+\textbf{Traducción fluida:} Muchos intentaron escribir un relato ordenado sobre los hechos que se han cumplido entre nosotros. \\
+\hline
+\end{tabularx}
+\arrayrulecolor{black}
+
+%%% Versiculo 2
+
+\section{Texto: \textgreek{ἔδοξε κἀμοὶ παρηκολουθηκότι ἄνωθεν πᾶσιν ἀκριβῶς καθεξῆς σοι γράψαι, κράτιστε Θεόφιλε}}
+
+\arrayrulecolor{verdelimon}
+\begin{tabularx}{\textwidth}{|Y|Y|Y|}
+	\rowcolor{verdelimon}
+	\textcolor{white}{\textbf{Función sintáctica}} & \textcolor{white}{\textbf{Texto griego}} & \textcolor{white}{\textbf{Morfología}} \\
+	\hline
+	Verbo principal impersonal & \textgreek{ἔδοξε} & Aoristo indicativo activo, 3ª persona singular de \textgreek{δοκέω}: “pareció bien” \\
+	\hline
+	Pronombre dativo + part. perf. & \textgreek{κἀμοὶ παρηκολουθηκότι} & \textgreek{κἀμοὶ} = καὶ ἐμοὶ (dat. de interés); participio perfecto activo masc. dat. sing. de \textgreek{παρακολουθέω} \\
+	\hline
+	Adverbio de origen & \textgreek{ἄνωθεν} & Adverbio: “desde el principio” \\
+	\hline
+	Pronombre indefinido & \textgreek{πᾶσιν} & Dativo plural de \textgreek{πᾶς}: “todas las cosas” \\
+	\hline
+	Adverbio de modo & \textgreek{ἀκριβῶς} & Adverbio: “con precisión” \\
+	\hline
+	Adverbio de orden & \textgreek{καθεξῆς} & Adverbio: “en orden, sucesivamente” \\
+	\hline
+	Pronombre dativo & \textgreek{σοι} & Dativo singular de \textgreek{σύ}: “a ti” \\
+	\hline
+	Verbo infinitivo & \textgreek{γράψαι} & Aoristo infinitivo activo de \textgreek{γράφω}: “escribir” \\
+	\hline
+	Vocativo + nombre propio & \textgreek{κράτιστε Θεόφιλε} & “Excelentísimo Teófilo” (vocativo de respeto) \\
+	\hline
+\end{tabularx}
+\arrayrulecolor{black}
+
+\vspace{0.5cm}
+
+\arrayrulecolor{verdelimon}
+\begin{tabularx}{\textwidth}{|Y|}
+	\hline
+	\textbf{Traducción literal:} Parecióme también a mí, que he investigado desde el principio todas las cosas cuidadosamente, escribírtelas ordenadamente, excelentísimo Teófilo. \\
+	\hline
+	\textbf{Traducción fluida:} A mí también me pareció bien, después de haber investigado todo desde el principio con diligencia, escribirlo ordenadamente para ti, excelentísimo Teófilo. \\
+	\hline
+\end{tabularx}
+\arrayrulecolor{black}
+
+%%% Versiculo 3
+
+\section{Texto: \textgreek{καθὼς παρέδοσαν ἡμῖν οἱ ἀπ’ ἀρχῆς αὐτόπται καὶ ὑπηρέται γενόμενοι τοῦ λόγου}}
+
+\arrayrulecolor{verdelimon}
+\begin{tabularx}{\textwidth}{|Y|Y|Y|}
+\rowcolor{verdelimon}
+\textcolor{white}{\textbf{Función sintáctica}} & \textcolor{white}{\textbf{Texto griego}} & \textcolor{white}{\textbf{Morfología}} \\
+\hline
+Conjunción comparativa & \textgreek{καθὼς} & Conjunción que introduce comparación o explicación \\
+\hline
+Verbo principal & \textgreek{παρέδοσαν} & Aoristo indicativo activo 3ª plural de \textgreek{παραδίδωμι} \\
+\hline
+Complemento indirecto & \textgreek{ἡμῖν} & Pronombre personal 1ª persona plural dativo \\
+\hline
+Sujeto del verbo & \textgreek{οἱ...αὐτόπται καὶ ὑπηρέται} & Nominativo masculino plural; testigos oculares y servidores \\
+\hline
+Participio circunstancial & \textgreek{γενόμενοι} & Participio aoristo medio, nominativo masculino plural \\
+\hline
+Complemento genitivo & \textgreek{τοῦ λόγου} & Genitivo masculino singular; complemento del participio \\
+\hline
+\end{tabularx}
+\arrayrulecolor{black}
+
+\vspace{0.5cm}
+\arrayrulecolor{verdelimon}
+\begin{tabularx}{\textwidth}{|Y|}
+\hline
+\textbf{Traducción literal:} Tal como nos lo transmitieron quienes desde el principio fueron testigos oculares y servidores de la palabra. \\
+\hline
+\textbf{Traducción fluida:} Según lo que nos transmitieron quienes desde el principio fueron testigos directos y servidores de la Palabra. \\
+\hline
+\end{tabularx}
+\arrayrulecolor{black}
+
+% versiculo 4
+
+\section{Texto: \textgreek{ἵνα ἐπιγνῷς περὶ ὧν κατηχήθης λόγων τὴν ἀσφάλειαν}}
+
+\arrayrulecolor{verdelimon}
+\begin{tabularx}{\textwidth}{|Y|Y|Y|}
+	\rowcolor{verdelimon}
+	\textcolor{white}{\textbf{Función sintáctica}} & \textcolor{white}{\textbf{Texto griego}} & \textcolor{white}{\textbf{Morfología}} \\
+	\hline
+	Conjunción final & \textgreek{ἵνα} & Introduce proposición final: “para que” + subjuntivo \\
+	\hline
+	Verbo principal en subjuntivo & \textgreek{ἐπιγνῷς} & Aoristo subjuntivo activo, 2ª persona singular de \textgreek{ἐπιγινώσκω} — “conozcas plenamente” \\
+	\hline
+	Preposición + pronombre relativo & \textgreek{περὶ ὧν} & \textbf{περὶ} rige genitivo: “acerca de las cosas que” \\
+	\hline
+	Verbo pasivo aoristo & \textgreek{κατηχήθης} & Aoristo pasivo indicativo, 2ª persona singular de \textgreek{κατηχέω} — “fuiste instruido” \\
+	\hline
+	Genitivo de relación (objeto de instrucción) & \textgreek{λόγων} & Genitivo plural de \textgreek{λόγος} — “palabras, enseñanzas” \\
+	\hline
+	Complemento directo & \textgreek{τὴν ἀσφάλειαν} & Acusativo femenino singular: “la certeza, seguridad” \\
+	\hline
+\end{tabularx}
+\arrayrulecolor{black}
+
+\vspace{0.5cm}
+
+\arrayrulecolor{verdelimon}
+\begin{tabularx}{\textwidth}{|Y|}
+	\hline
+	\textbf{Traducción literal:} Para que conozcas con certeza las cosas acerca de las cuales fuiste instruido. \\
+	\hline
+	\textbf{Traducción fluida:} Para que tengas plena certeza de las enseñanzas que has recibido. \\
+	\hline
+\end{tabularx}
+\arrayrulecolor{black}
+
+
+%%% versiculo 5
+\section{Texto: \textgreek{Ἐγένετο ἐν ταῖς ἡμέραις Ἡρῴδου βασιλέως τῆς Ἰουδαίας ἱερεύς τις ὀνόματι Ζαχαρίας ἐξ ἐφημερίας Ἀβιά, καὶ γυνὴ αὐτῷ ἐκ τῶν θυγατέρων Ἀαρών, καὶ τὸ ὄνομα αὐτῆς Ἐλισάβετ}}
+
+\arrayrulecolor{verdelimon}
+\begin{tabularx}{\textwidth}{|Y|Y|Y|}
+	\rowcolor{verdelimon}
+	\textcolor{white}{\textbf{Función sintáctica}} & \textcolor{white}{\textbf{Texto griego}} & \textcolor{white}{\textbf{Morfología}} \\
+	\hline
+	Verbo principal & \textgreek{Ἐγένετο} & Aoristo indicativo medio, 3ª persona singular de \textgreek{γίγνομαι} \\
+	\hline
+	Circunstancial de tiempo & \textgreek{ἐν ταῖς ἡμέραις} & \textbf{ἐν} rige dativo; “en los días” \\
+	\hline
+	Complemento del dativo & \textgreek{Ἡρῴδου βασιλέως} & Genitivo masculino singular: “de Herodes el rey” \\
+	\hline
+	Sujeto indefinido & \textgreek{ἱερεύς τις} & Sustantivo + indefinido nominativo masculino singular: “un sacerdote” \\
+	\hline
+	Nombre propio en aposición & \textgreek{ὀνόματι Ζαχαρίας} & Dativo de denominación: “llamado Zacarías” \\
+	\hline
+	Origen sacerdotal & \textgreek{ἐξ ἐφημερίας Ἀβιά} & \textbf{ἐξ} rige genitivo: “de la clase de Abías” \\
+	\hline
+	Coordinación + sujeto & \textgreek{καὶ γυνὴ αὐτῷ} & Nominativo femenino singular + dativo personal: “y su mujer” \\
+	\hline
+	Origen familiar & \textgreek{ἐκ τῶν θυγατέρων Ἀαρών} & \textbf{ἐκ} rige genitivo: “de las hijas de Aarón” \\
+	\hline
+	Nombre propio & \textgreek{τὸ ὄνομα αὐτῆς Ἐλισάβετ} & Acusativo neutro + genitivo + nombre propio: “su nombre era Elisabet” \\
+	\hline
+\end{tabularx}
+\arrayrulecolor{black}
+
+\vspace{0.5cm}
+
+\arrayrulecolor{verdelimon}
+\begin{tabularx}{\textwidth}{|Y|}
+	\hline
+	\textbf{Traducción literal:} Hubo en los días de Herodes, rey de Judea, un sacerdote llamado Zacarías, de la clase de Abías; y su mujer, de las hijas de Aarón, se llamaba Elisabet. \\
+	\hline
+	\textbf{Traducción fluida:} En tiempos del rey Herodes de Judea, vivía un sacerdote llamado Zacarías, de la clase de Abías; su esposa, descendiente de Aarón, se llamaba Elisabet. \\
+	\hline
+\end{tabularx}
+\arrayrulecolor{black}
+
+
+
+\end{document}

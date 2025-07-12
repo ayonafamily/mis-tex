@@ -1,0 +1,22 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{pdfpages}
+\geometry{top=2.54cm,left=2.54cm,right=2.54cm,bottom=2.54cm}
+\usepackage{lmodern}
+\usepackage{setspace}
+\usepackage{color}
+\definecolor{cato}{rgb}{0.4, 1.0, 0.0}
+
+\begin{document}
+	
+	% cambia include por input
+	\input{caratula}
+	
+	\section*{}
+	
+	\includepdf[pages=-, pagecommand={}, fitpaper=true]{archivo.pdf}
+	
+\end{document}

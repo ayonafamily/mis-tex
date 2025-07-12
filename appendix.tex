@@ -1,0 +1,53 @@
+\begin{appendices}
+
+    \section{Data explained}
+    
+    \lipsum[3-4]
+
+    \section{Code}
+    
+    \verb+ \textbf{Example} + produces the result \textbf{Example}.
+    
+    \begin{verbatim}
+
+        \begin{document}
+            \maketitle
+        \end{document}
+
+    \end{verbatim}
+
+\section{Lists}
+
+\begin{itemize}[label={+)}]
+    \item one element
+    \item another element
+    \item the last element
+    \item And here another list
+    \begin{itemize}[label={$\ast$}]
+        \item one thing
+        \item another thing
+        \item and another one
+    \end{itemize}
+    \item The final element
+\end{itemize}
+
+\clearpage
+
+\begin{enumerate}[label=\arabic*)]
+    \item one element
+    \item another element
+    \item the last element
+    \item And here another list
+    \begin{enumerate}
+        \item one thing
+        \item another thing
+        \item and another one
+        \begin{enumerate}
+            \item sub list first
+            \item sub list second
+        \end{enumerate}
+    \end{enumerate}
+    \item The final element
+\end{enumerate}
+
+\end{appendices}

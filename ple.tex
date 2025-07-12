@@ -1,0 +1,1407 @@
+\documentclass[a4paper12pt]{article}
+
+    \usepackage[breakable]{tcolorbox}
+    \usepackage{parskip} % Stop auto-indenting (to mimic markdown behaviour)
+    
+    \usepackage{tabularx}
+    \usepackage[spanish]{babel}
+
+    % Basic figure setup, for now with no caption control since it's done
+    % automatically by Pandoc (which extracts ![](path) syntax from Markdown).
+    \usepackage{graphicx}
+    % Keep aspect ratio if custom image width or height is specified
+    \setkeys{Gin}{keepaspectratio}
+    % Maintain compatibility with old templates. Remove in nbconvert 6.0
+    \let\Oldincludegraphics\includegraphics
+    % Ensure that by default, figures have no caption (until we provide a
+    % proper Figure object with a Caption API and a way to capture that
+    % in the conversion process - todo).
+    \usepackage{caption}
+    \DeclareCaptionFormat{nocaption}{}
+    \captionsetup{format=nocaption,aboveskip=0pt,belowskip=0pt}
+
+    \usepackage{float}
+    \floatplacement{figure}{H} % forces figures to be placed at the correct location
+    \usepackage{xcolor} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage{textcomp} % defines textquotesingle
+    % Hack from http://tex.stackexchange.com/a/47451/13684:
+    \AtBeginDocument{%
+        \def\PYZsq{\textquotesingle}% Upright quotes in Pygmentized code
+    }
+    \usepackage{upquote} % Upright quotes for verbatim code
+    \usepackage{eurosym} % defines \euro
+
+    \usepackage{iftex}
+    \ifPDFTeX
+        \usepackage[T1]{fontenc}
+        \IfFileExists{alphabeta.sty}{
+              \usepackage{alphabeta}
+          }{
+              \usepackage[mathletters]{ucs}
+              \usepackage[utf8x]{inputenc}
+          }
+    \else
+        \usepackage{fontspec}
+        \usepackage{unicode-math}
+    \fi
+
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics
+                         % to support a larger range
+    \makeatletter % fix for old versions of grffile with XeLaTeX
+    \@ifpackagelater{grffile}{2019/11/01}
+    {
+      % Do nothing on new versions
+    }
+    {
+      \def\Gread@@xetex#1{%
+        \IfFileExists{"\Gin@base".bb}%
+        {\Gread@eps{\Gin@base.bb}}%
+        {\Gread@@xetex@aux#1}%
+      }
+    }
+    \makeatother
+    \usepackage[Export]{adjustbox} % Used to constrain images to a maximum size
+    \adjustboxset{max size={0.9\linewidth}{0.9\paperheight}}
+
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    % The default LaTeX title has an obnoxious amount of whitespace. By default,
+    % titling removes some of it. It also provides customization options.
+    \usepackage{titling}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    \usepackage{array}     % table support for pandoc >= 2.11.3
+    \usepackage{calc}      % table minipage width calculation for pandoc >= 2.11.1
+    \usepackage[inline]{enumitem} % IRkernel/repr support (it uses the enumerate* environment)
+    \usepackage[normalem]{ulem} % ulem is needed to support strikethroughs (\sout)
+                                % normalem makes italics be italics, not underlines
+    \usepackage{soul}      % strikethrough (\st) support for pandoc >= 3.0.0
+    \usepackage{mathrsfs}
+    \usepackage{hyperref}
+    \usepackage{xurl}
+
+    
+    % Colors for the hyperref package
+    \definecolor{urlcolor}{rgb}{0,.145,.698}
+    \definecolor{linkcolor}{rgb}{.71,0.21,0.01}
+    \definecolor{citecolor}{rgb}{.12,.54,.11}
+
+    % ANSI colors
+    \definecolor{ansi-black}{HTML}{3E424D}
+    \definecolor{ansi-black-intense}{HTML}{282C36}
+    \definecolor{ansi-red}{HTML}{E75C58}
+    \definecolor{ansi-red-intense}{HTML}{B22B31}
+    \definecolor{ansi-green}{HTML}{00A250}
+    \definecolor{ansi-green-intense}{HTML}{007427}
+    \definecolor{ansi-yellow}{HTML}{DDB62B}
+    \definecolor{ansi-yellow-intense}{HTML}{B27D12}
+    \definecolor{ansi-blue}{HTML}{208FFB}
+    \definecolor{ansi-blue-intense}{HTML}{0065CA}
+    \definecolor{ansi-magenta}{HTML}{D160C4}
+    \definecolor{ansi-magenta-intense}{HTML}{A03196}
+    \definecolor{ansi-cyan}{HTML}{60C6C8}
+    \definecolor{ansi-cyan-intense}{HTML}{258F8F}
+    \definecolor{ansi-white}{HTML}{C5C1B4}
+    \definecolor{ansi-white-intense}{HTML}{A1A6B2}
+    \definecolor{ansi-default-inverse-fg}{HTML}{FFFFFF}
+    \definecolor{ansi-default-inverse-bg}{HTML}{000000}
+
+    % common color for the border for error outputs.
+    \definecolor{outerrorbackground}{HTML}{FFDFDF}
+
+    % commands and environments needed by pandoc snippets
+    % extracted from the output of `pandoc -s`
+    \providecommand{\tightlist}{%
+      \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+    \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+    % Add ',fontsize=\small' for more characters per line
+    \newenvironment{Shaded}{}{}
+    \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+    \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+    \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+    \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+    \newcommand{\RegionMarkerTok}[1]{{#1}}
+    \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\NormalTok}[1]{{#1}}
+
+    % Additional commands for more recent versions of Pandoc
+    \newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{{#1}}}
+    \newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{{#1}}}
+    \newcommand{\ImportTok}[1]{{#1}}
+    \newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{{#1}}}}
+    \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{{#1}}}
+    \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{{#1}}}
+    \newcommand{\BuiltInTok}[1]{{#1}}
+    \newcommand{\ExtensionTok}[1]{{#1}}
+    \newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{{#1}}}
+    \newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{{#1}}}
+    \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \makeatletter
+    \newsavebox\pandoc@box
+    \newcommand*\pandocbounded[1]{%
+      \sbox\pandoc@box{#1}%
+      % scaling factors for width and height
+      \Gscale@div\@tempa\textheight{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+      \Gscale@div\@tempb\linewidth{\wd\pandoc@box}%
+      % select the smaller of both
+      \ifdim\@tempb\p@<\@tempa\p@
+        \let\@tempa\@tempb
+      \fi
+      % scaling accordingly (\@tempa < 1)
+      \ifdim\@tempa\p@<\p@
+        \scalebox{\@tempa}{\usebox\pandoc@box}%
+      % scaling not needed, use as it is
+      \else
+        \usebox{\pandoc@box}%
+      \fi
+    }
+    \makeatother
+
+    % Define a nice break command that doesn't care if a line doesn't already
+    % exist.
+    \def\br{\hspace*{\fill} \\* }
+    % Math Jax compatibility definitions
+    \def\gt{>}
+    \def\lt{<}
+    \let\Oldtex\TeX
+    \let\Oldlatex\LaTeX
+    \renewcommand{\TeX}{\textrm{\Oldtex}}
+    \renewcommand{\LaTeX}{\textrm{\Oldlatex}}
+    % Document parameters
+    % Document title
+    
+\usepackage{fontspec}
+\setmainfont{Arial}
+   
+    \title{\vspace{5cm}Entornos Privados De Aprendizaje \\ (PLE) \\ Apuntes de Clase \vspace{2cm}}
+   
+    \author{Jorge Ayona \\}
+   
+    \date{\today}
+  
+    
+    
+    
+% Pygments definitions
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\@namedef{PY@tok@w}{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\@namedef{PY@tok@c}{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.24,0.48,0.48}{##1}}}
+\@namedef{PY@tok@cp}{\def\PY@tc##1{\textcolor[rgb]{0.61,0.40,0.00}{##1}}}
+\@namedef{PY@tok@k}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\@namedef{PY@tok@kp}{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\@namedef{PY@tok@kt}{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
+\@namedef{PY@tok@o}{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\@namedef{PY@tok@ow}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\@namedef{PY@tok@nb}{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\@namedef{PY@tok@nf}{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\@namedef{PY@tok@nc}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\@namedef{PY@tok@nn}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\@namedef{PY@tok@ne}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.80,0.25,0.22}{##1}}}
+\@namedef{PY@tok@nv}{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\@namedef{PY@tok@no}{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
+\@namedef{PY@tok@nl}{\def\PY@tc##1{\textcolor[rgb]{0.46,0.46,0.00}{##1}}}
+\@namedef{PY@tok@ni}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.44,0.44,0.44}{##1}}}
+\@namedef{PY@tok@na}{\def\PY@tc##1{\textcolor[rgb]{0.41,0.47,0.13}{##1}}}
+\@namedef{PY@tok@nt}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\@namedef{PY@tok@nd}{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\@namedef{PY@tok@s}{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\@namedef{PY@tok@sd}{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\@namedef{PY@tok@si}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.64,0.35,0.47}{##1}}}
+\@namedef{PY@tok@se}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.36,0.12}{##1}}}
+\@namedef{PY@tok@sr}{\def\PY@tc##1{\textcolor[rgb]{0.64,0.35,0.47}{##1}}}
+\@namedef{PY@tok@ss}{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\@namedef{PY@tok@sx}{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\@namedef{PY@tok@m}{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\@namedef{PY@tok@gh}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\@namedef{PY@tok@gu}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\@namedef{PY@tok@gd}{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\@namedef{PY@tok@gi}{\def\PY@tc##1{\textcolor[rgb]{0.00,0.52,0.00}{##1}}}
+\@namedef{PY@tok@gr}{\def\PY@tc##1{\textcolor[rgb]{0.89,0.00,0.00}{##1}}}
+\@namedef{PY@tok@ge}{\let\PY@it=\textit}
+\@namedef{PY@tok@gs}{\let\PY@bf=\textbf}
+\@namedef{PY@tok@ges}{\let\PY@bf=\textbf\let\PY@it=\textit}
+\@namedef{PY@tok@gp}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\@namedef{PY@tok@go}{\def\PY@tc##1{\textcolor[rgb]{0.44,0.44,0.44}{##1}}}
+\@namedef{PY@tok@gt}{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
+\@namedef{PY@tok@err}{\def\PY@bc##1{{\setlength{\fboxsep}{\string -\fboxrule}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}}
+\@namedef{PY@tok@kc}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\@namedef{PY@tok@kd}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\@namedef{PY@tok@kn}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\@namedef{PY@tok@kr}{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\@namedef{PY@tok@bp}{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\@namedef{PY@tok@fm}{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\@namedef{PY@tok@vc}{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\@namedef{PY@tok@vg}{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\@namedef{PY@tok@vi}{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\@namedef{PY@tok@vm}{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\@namedef{PY@tok@sa}{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\@namedef{PY@tok@sb}{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\@namedef{PY@tok@sc}{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\@namedef{PY@tok@dl}{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\@namedef{PY@tok@s2}{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\@namedef{PY@tok@sh}{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\@namedef{PY@tok@s1}{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\@namedef{PY@tok@mb}{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\@namedef{PY@tok@mf}{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\@namedef{PY@tok@mh}{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\@namedef{PY@tok@mi}{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\@namedef{PY@tok@il}{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\@namedef{PY@tok@mo}{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\@namedef{PY@tok@ch}{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.24,0.48,0.48}{##1}}}
+\@namedef{PY@tok@cm}{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.24,0.48,0.48}{##1}}}
+\@namedef{PY@tok@cpf}{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.24,0.48,0.48}{##1}}}
+\@namedef{PY@tok@c1}{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.24,0.48,0.48}{##1}}}
+\@namedef{PY@tok@cs}{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.24,0.48,0.48}{##1}}}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+\def\PYZam{\char`\&}
+\def\PYZlt{\char`\<}
+\def\PYZgt{\char`\>}
+\def\PYZsh{\char`\#}
+\def\PYZpc{\char`\%}
+\def\PYZdl{\char`\$}
+\def\PYZhy{\char`\-}
+\def\PYZsq{\char`\'}
+\def\PYZdq{\char`\"}
+\def\PYZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+
+    % For linebreaks inside Verbatim environment from package fancyvrb.
+    \makeatletter
+        \newbox\Wrappedcontinuationbox
+        \newbox\Wrappedvisiblespacebox
+        \newcommand*\Wrappedvisiblespace {\textcolor{red}{\textvisiblespace}}
+        \newcommand*\Wrappedcontinuationsymbol {\textcolor{red}{\llap{\tiny$\m@th\hookrightarrow$}}}
+        \newcommand*\Wrappedcontinuationindent {3ex }
+        \newcommand*\Wrappedafterbreak {\kern\Wrappedcontinuationindent\copy\Wrappedcontinuationbox}
+        % Take advantage of the already applied Pygments mark-up to insert
+        % potential linebreaks for TeX processing.
+        %        {, <, #, %, $, ' and ": go to next line.
+        %        _, }, ^, &, >, - and ~: stay at end of broken line.
+        % Use of \textquotesingle for straight quote.
+        \newcommand*\Wrappedbreaksatspecials {%
+            \def\PYGZus{\discretionary{\char`\_}{\Wrappedafterbreak}{\char`\_}}%
+            \def\PYGZob{\discretionary{}{\Wrappedafterbreak\char`\{}{\char`\{}}%
+            \def\PYGZcb{\discretionary{\char`\}}{\Wrappedafterbreak}{\char`\}}}%
+            \def\PYGZca{\discretionary{\char`\^}{\Wrappedafterbreak}{\char`\^}}%
+            \def\PYGZam{\discretionary{\char`\&}{\Wrappedafterbreak}{\char`\&}}%
+            \def\PYGZlt{\discretionary{}{\Wrappedafterbreak\char`\<}{\char`\<}}%
+            \def\PYGZgt{\discretionary{\char`\>}{\Wrappedafterbreak}{\char`\>}}%
+            \def\PYGZsh{\discretionary{}{\Wrappedafterbreak\char`\#}{\char`\#}}%
+            \def\PYGZpc{\discretionary{}{\Wrappedafterbreak\char`\%}{\char`\%}}%
+            \def\PYGZdl{\discretionary{}{\Wrappedafterbreak\char`\$}{\char`\$}}%
+            \def\PYGZhy{\discretionary{\char`\-}{\Wrappedafterbreak}{\char`\-}}%
+            \def\PYGZsq{\discretionary{}{\Wrappedafterbreak\textquotesingle}{\textquotesingle}}%
+            \def\PYGZdq{\discretionary{}{\Wrappedafterbreak\char`\"}{\char`\"}}%
+            \def\PYGZti{\discretionary{\char`\~}{\Wrappedafterbreak}{\char`\~}}%
+        }
+        % Some characters . , ; ? ! / are not pygmentized.
+        % This macro makes them "active" and they will insert potential linebreaks
+        \newcommand*\Wrappedbreaksatpunct {%
+            \lccode`\~`\.\lowercase{\def~}{\discretionary{\hbox{\char`\.}}{\Wrappedafterbreak}{\hbox{\char`\.}}}%
+            \lccode`\~`\,\lowercase{\def~}{\discretionary{\hbox{\char`\,}}{\Wrappedafterbreak}{\hbox{\char`\,}}}%
+            \lccode`\~`\;\lowercase{\def~}{\discretionary{\hbox{\char`\;}}{\Wrappedafterbreak}{\hbox{\char`\;}}}%
+            \lccode`\~`\:\lowercase{\def~}{\discretionary{\hbox{\char`\:}}{\Wrappedafterbreak}{\hbox{\char`\:}}}%
+            \lccode`\~`\?\lowercase{\def~}{\discretionary{\hbox{\char`\?}}{\Wrappedafterbreak}{\hbox{\char`\?}}}%
+            \lccode`\~`\!\lowercase{\def~}{\discretionary{\hbox{\char`\!}}{\Wrappedafterbreak}{\hbox{\char`\!}}}%
+            \lccode`\~`\/\lowercase{\def~}{\discretionary{\hbox{\char`\/}}{\Wrappedafterbreak}{\hbox{\char`\/}}}%
+            \catcode`\.\active
+            \catcode`\,\active
+            \catcode`\;\active
+            \catcode`\:\active
+            \catcode`\?\active
+            \catcode`\!\active
+            \catcode`\/\active
+            \lccode`\~`\~
+        }
+    \makeatother
+
+    \let\OriginalVerbatim=\Verbatim
+    \makeatletter
+    \renewcommand{\Verbatim}[1][1]{%
+        %\parskip\z@skip
+        \sbox\Wrappedcontinuationbox {\Wrappedcontinuationsymbol}%
+        \sbox\Wrappedvisiblespacebox {\FV@SetupFont\Wrappedvisiblespace}%
+        \def\FancyVerbFormatLine ##1{\hsize\linewidth
+            \vtop{\raggedright\hyphenpenalty\z@\exhyphenpenalty\z@
+                \doublehyphendemerits\z@\finalhyphendemerits\z@
+                \strut ##1\strut}%
+        }%
+        % If the linebreak is at a space, the latter will be displayed as visible
+        % space at end of first line, and a continuation symbol starts next line.
+        % Stretch/shrink are however usually zero for typewriter font.
+        \def\FV@Space {%
+            \nobreak\hskip\z@ plus\fontdimen3\font minus\fontdimen4\font
+            \discretionary{\copy\Wrappedvisiblespacebox}{\Wrappedafterbreak}
+            {\kern\fontdimen2\font}%
+        }%
+
+        % Allow breaks at special characters using \PYG... macros.
+        \Wrappedbreaksatspecials
+        % Breaks at punctuation characters . , ; ? ! and / need catcode=\active
+        \OriginalVerbatim[#1,codes*=\Wrappedbreaksatpunct]%
+    }
+    \makeatother
+
+    % Exact colors from NB
+    \definecolor{incolor}{HTML}{303F9F}
+    \definecolor{outcolor}{HTML}{D84315}
+    \definecolor{cellborder}{HTML}{CFCFCF}
+    \definecolor{cellbackground}{HTML}{F7F7F7}
+
+    % prompt
+    \makeatletter
+    \newcommand{\boxspacing}{\kern\kvtcb@left@rule\kern\kvtcb@boxsep}
+    \makeatother
+    \newcommand{\prompt}[4]{
+        {\ttfamily\llap{{\color{#2}[#3]:\hspace{3pt}#4}}\vspace{-\baselineskip}}
+    }
+    
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=urlcolor,
+      linkcolor=linkcolor,
+      citecolor=citecolor,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+\begin{document}
+	
+	   
+    
+    \maketitle
+    
+    
+\newpage
+    
+    \hypertarget{componentes-de-un-ple}{%
+\section{Componentes de un PLE}\label{componentes-de-un-ple}}
+
+El Entorno Personal de Aprendizaje, como vemos, es un término que posee
+una determinada estructura de la cual se pueden desprender varias
+partes. Castañeda y Adell (2010) identifican los tres primeros
+componentes que se indican a continuación; el cuarto componente
+relacionado con la producción se agrega desde la perspectiva del
+proyecto EPA! porque se considera relevante para la verificación y
+visibilización de los aprendizajes logrados por los estudiantes:
+
+\begin{figure}
+\centering
+\includegraphics{Conceptualizacio.jpg}
+\caption{Tabla Conceptual}
+\end{figure}
+
+    Castañeda, L. y Adell, J. (2011): El desarrollo profesional de los
+docentes en entornos personales de aprendizaje (PLE). En Roig Vila, R. y
+Laneve, C. (Eds.) La práctica educativa en la Sociedad de la
+Información: Innovación a través de la investigación / La pratica
+educativa nella Società dell'informazione: L'innovazione attraverso la
+ricerca. Alcoy: Marfil. 83-95, identifican los tres primeros componentes
+que se indican a continuación; el cuarto componente relacionado con la
+producción se agrega desde la perspectiva del proyecto EPA! porque se
+considera relevante para la verificación y visibilización de los
+aprendizajes logrados por los estudiantes:
+
+    \begin{itemize}
+\tightlist
+\item
+  Herramientas: Los instrumentos que cada persona elige para mantener
+  una comunicación con los demás en la Red personal de Aprendizaje.
+\item
+  Red personal de aprendizaje: Conjunto de personas con las que se
+  mantiene contacto y entorno virtual en donde se comparte la
+  información.-
+\item
+  Recursos: Se compone de toda la información que hay en Internet que
+  puede ser valiosa para la propia formación. Se suelen generar por los
+  miembros de las redes personales de aprendizaje con los que se ponen
+  en práctica las diversas herramientas.
+\item
+  Producción: Comprende toda actividad creativa que contiene información
+  digitalizada, y que responde a las necesidades de los diferentes
+  sectores económicos.
+\end{itemize}
+
+    PLE implica, entonces, buscar, seleccionar, decidir, valorar y, en suma,
+construir y reconstruir la propia red de recursos, los flujos de
+información y el aprendizaje.
+
+    \begin{figure}
+\centering
+\includegraphics{2.jpg}
+\caption{Componentes del PLE}
+\end{figure}
+
+    \hypertarget{explorando-la-ia}{%
+\section{Explorando la IA}\label{explorando-la-ia}}
+
+    \hypertarget{ver-muxe1s-inteligencia-artificial}{%
+\subsection{Ver más Inteligencia
+Artificial}\label{ver-muxe1s-inteligencia-artificial}}
+
+La inteligencia artificial generativa se basa en modelos avanzados de
+aprendizaje automático que pueden crear contenido nuevo, como imágenes,
+texto, música o videos, a partir de datos existentes. 1. OpenAI GPT
+(ChatGPT)
+
+o Descripción: Herramienta de procesamiento de lenguaje natural que
+permite interactuar con modelos generativos como GPT.
+
+o Enlace: ChatGPT - OpenAI
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Hugging Face
+\end{enumerate}
+
+o Descripción: Plataforma para explorar, usar y crear modelos de
+lenguaje generativo como GPT, BERT, etc.
+
+o Enlace: Hugging Face
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Google Colab
+\end{enumerate}
+
+o Descripción: Entorno de programación en línea que permite ejecutar
+código Python directamente en el navegador. Ideal para explorar y
+entrenar modelos generativos.
+
+o Enlace: Google Colab
+
+    \hypertarget{los-mejores-modelos-de-lenguaje-grandes-llm-para-2025-y-cuxf3mo-elegir-el-adecuado-para-tu-sitio}{%
+\section{Los mejores modelos de lenguaje grandes (LLM) para 2025 y cómo
+elegir el adecuado para tu
+sitio}\label{los-mejores-modelos-de-lenguaje-grandes-llm-para-2025-y-cuxf3mo-elegir-el-adecuado-para-tu-sitio}}
+
+Los grandes modelos de lenguaje (LLM) están emergiendo como elementos
+transformadores en el campo del desarrollo web. Están haciendo que la
+creación, mantenimiento y monetización de sitios web sea más accesible
+para aquellos sin habilidades técnicas.
+
+La facilidad con la que la Inteligencia Artificial (IA) puede ayudar a
+los principiantes a realizar tareas complejas ha establecido a los LLMs
+como herramientas esenciales para los dueños de sitios web. Sin embargo,
+elegir el mejor modelo de lenguaje grande es clave.
+
+Para simplificar este proceso, nuestro equipo de expertos ha elaborado
+esta lista de grandes modelos de lenguaje, facilitándote la elección del
+modelo de IA perfecto para las necesidades de tu sitio web.
+
+Estos modelos de base pueden procesar eficazmente el feedback humano, lo
+que los hace ideales para la creación de sitios web impulsados por IA.
+
+    Tabla de Contenidos ¿Qué son los grandes modelos de lenguaje? ¿Cómo
+funcionan los grandes modelos de lenguaje? 8 principales modelos de
+lenguaje grandes 1. GPT 3.5 2. GPT-4 3. Gemini 4. LlaMa 5. Falcon 6.
+Cohere 7. PaLM 8. Claude v1 \#\# Cómo elegir el mejor LLM para tu sitio
+web \#\#\# Preguntas Frecuentes sobre LLM - ¿Cómo puedo beneficiarme al
+usar LLM para la creación de sitios web? - ¿Pueden los modelos de
+lenguaje como GPT-3.5 y GPT-4 ayudar a monetizar mi sitio web? - ¿Cómo
+se entrenan los grandes modelos de lenguaje para ser tan poderosos? -
+¿Cuáles son los modelos de lenguaje grandes más populares? - ¿Los
+modelos de lenguaje grandes comprenden lo que están diciendo?
+
+    \hypertarget{quuxe9-son-los-grandes-modelos-de-lenguaje}{%
+\subsubsection{¿Qué son los grandes modelos de
+lenguaje?}\label{quuxe9-son-los-grandes-modelos-de-lenguaje}}
+
+Los modelos de lenguaje grandes son sistemas avanzados de IA que son
+capaces de entender y generar lenguaje humano. Están construidos
+utilizando arquitecturas complejas de redes neuronales, como los modelos
+transformer, inspirados en el cerebro humano.
+
+Estos modelos están entrenados con grandes cantidades de datos, lo que
+les permite comprender el contexto y producir resultados coherentes
+basados en texto, ya sea respondiendo a una pregunta o creando una
+narrativa.
+
+En términos simples, un modelo de lenguaje grande es una IA generativa
+altamente avanzada que está diseñada para entender y generar lenguaje
+humano.
+
+Esta innovación está transformando cómo nos comunicamos con las
+computadoras y la tecnología.
+
+    \hypertarget{cuxf3mo-funcionan-los-grandes-modelos-de-lenguaje}{%
+\subsubsection{¿Cómo funcionan los grandes modelos de
+lenguaje?}\label{cuxf3mo-funcionan-los-grandes-modelos-de-lenguaje}}
+
+Los modelos de lenguaje grandes funcionan consumiendo grandes cantidades
+de información en forma de texto escrito, como libros, artículos y otros
+datos de Internet. Cuanto más datos de alta calidad procesan estos
+modelos de aprendizaje profundo, se vuelven mejores en comprender y
+utilizar el lenguaje humano.
+
+Echemos un vistazo más de cerca a los conceptos básicos detrás de cómo
+funcionan:
+
+\hypertarget{arquitectura}{%
+\paragraph{Arquitectura}\label{arquitectura}}
+
+La arquitectura del modelo transformer es la innovación central detrás
+de los grandes modelos de lenguaje. Esta técnica de deep learning
+utiliza el mecanismo de atención para ponderar la importancia de
+diferentes palabras en una secuencia, permitiendo que el LLM maneje
+dependencias a largo plazo entre palabras.
+
+\hypertarget{mecanismo-de-atenciuxf3n}{%
+\paragraph{Mecanismo de Atención}\label{mecanismo-de-atenciuxf3n}}
+
+Uno de los componentes clave de la arquitectura transformer es el
+mecanismo de atención, que permite al modelo centrarse en diferentes
+partes del texto de entrada original al generar la salida.
+
+Esto le permite capturar relaciones entre palabras, independientemente
+de su distancia entre sí en el texto.
+
+\hypertarget{datos-de-entrenamiento}{%
+\paragraph{Datos de Entrenamiento}\label{datos-de-entrenamiento}}
+
+Los LLMs se entrenan en enormes conjuntos de datos que contienen partes
+de Internet. Esto les permite aprender no solo gramática y hechos, sino
+también estilo, retórica, razonamiento e incluso cierta cantidad de
+sentido común.
+
+\hypertarget{tokens}{%
+\paragraph{Tokens}\label{tokens}}
+
+El texto se descompone en fragmentos llamados tokens, que pueden ser tan
+cortos como un carácter o tan largos como una palabra. El modelo procesa
+estos tokens en lotes, comprendiendo y generando lenguaje.
+
+\hypertarget{proceso-de-entrenamiento}{%
+\paragraph{Proceso de Entrenamiento}\label{proceso-de-entrenamiento}}
+
+Pre-entrenamiento: Los LLMs primero pasan por un aprendizaje no
+supervisado en enormes corpus de texto. Predicen la próxima palabra en
+una secuencia, aprendiendo patrones de lenguaje, hechos e incluso
+algunas habilidades de razonamiento. Reajuste: después del entrenamiento
+previo, los modelos se ajustan en tareas específicas (por ejemplo,
+traducción, resumen) con datos etiquetados. Este proceso de ajuste de
+instrucciones personaliza el modelo para que funcione mejor en esas
+tareas. Enfoque por Capas
+
+La arquitectura transformer tiene múltiples capas, cada una compuesta
+por mecanismos de atención y redes neuronales recurrentes. A medida que
+la información pasa por estas capas, se vuelve cada vez más abstracta,
+permitiendo que el modelo genere texto coherente y contextualmente
+relevante.
+
+\hypertarget{capacidad-generativa}{%
+\paragraph{Capacidad Generativa}\label{capacidad-generativa}}
+
+Los modelos de lenguaje grandes son generativos, lo que significa que
+pueden producir texto basado en las entradas del usuario de una manera
+coherente. Los patrones aprendidos del mecanismo de atención le dan a un
+modelo de lenguaje grande su capacidad generativa.
+
+\hypertarget{interactividad}{%
+\paragraph{Interactividad}\label{interactividad}}
+
+Los modelos de lenguaje grandes pueden interactuar con los usuarios en
+tiempo real a través de un modelo de chatbot para generar texto basado
+en prompts, responder preguntas e incluso imitar ciertos estilos de
+escritura.
+
+\hypertarget{limitaciones}{%
+\subsubsection{Limitaciones:}\label{limitaciones}}
+
+\begin{itemize}
+\item
+  Los LLMs realmente no \textbf{entienden} el texto. Reconocen patrones
+  de sus datos de entrenamiento.
+\item
+  Son sensibles a la secuencia de entrada y podrían dar respuestas
+  diferentes para preguntas ligeramente variadas.
+\item
+  No tienen la capacidad de razonar o pensar críticamente de la misma
+  manera que los humanos. Basan sus respuestas en patrones observados
+  durante el entrenamiento.
+\end{itemize}
+
+    \hypertarget{principales-modelos-de-lenguaje-grandes}{%
+\section{8 principales modelos de lenguaje
+grandes}\label{principales-modelos-de-lenguaje-grandes}}
+
+Ahora, echemos un vistazo a los mejores modelos de lenguaje de 2025.
+Cada modelo ofrece capacidades únicas que redefinen la creación de
+sitios web, la monetización y los enfoques de marketing.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  GPT 3.5 Imagen del sitio de ChatGPT. El Transformer Pre-entrenado
+  Generativo (GPT) 3.5, desarrollado por OpenAI, es un modelo de
+  lenguaje de última generación que ha llevado el procesamiento del
+  lenguaje natural (NLP) a nuevos niveles.
+\end{enumerate}
+
+Con su refinada arquitectura transformer, las redes neuronales de GPT
+3.5 son capaces de entender y generar texto similar al humano, lo que
+las hace excepcionalmente versátiles en diversas aplicaciones. Puede
+construir frases, párrafos e incluso artículos completos con un estilo
+que refleja la composición humana.
+
+Sus inmensos datos de entrenamiento, que abarcan vastas porciones de la
+web, lo equipan con diversos estilos lingüísticos y una amplia gama de
+conocimientos.
+
+\hypertarget{mejores-casos-de-uso}{%
+\subparagraph{Mejores casos de uso:}\label{mejores-casos-de-uso}}
+
+\begin{itemize}
+\item
+  Creación de sitios web
+\item
+  Creación de contenido: GPT 3.5 se destaca en producir contenido
+  generado por IA para sitios web, desde publicaciones de blog y
+  preguntas frecuentes hasta copias de páginas de destino personalizadas
+  para tu público objetivo. Adapta hábilmente su tono y voz para a
+  diversas demografías de sitios web. Optimización SEO: cuando se trata
+  de optimizar el contenido web con modelos de lenguaje, GPT 3.5 es el
+  más destacado. Se puede utilizar junto con herramientas de SEO de IA
+  para escribir contenido que sea amigable para el lector y que esté
+  optimizado para los motores de búsqueda.
+\item
+  Monetización:
+\item
+  Copy de anuncios: el éxito de los anuncios en línea a menudo se
+  vincula con el copy. GPT 3.5 puede generar copys de anuncios
+  persuasivos y atractivos que pueden aumentar los clics y las
+  conversiones. Análisis del comportamiento del usuario: GPT 3.5 es
+  principalmente un LLM de generación de texto, pero puede integrarse
+  con herramientas analíticas para obtener información y ayudarte a
+  deducir patrones de comportamiento del usuario.
+\item
+  Marketing:
+\end{itemize}
+
+Publicaciones atractivas para redes sociales: GPT 3.5 puede ayudarte a
+crear publicaciones en redes sociales que capten la atención, lo que
+lleva a tasas de engagement más altas. Campañas de correo electrónico:
+las campañas de correo electrónico personalizadas tienen una tasa de
+éxito más alta. GPT 3.5 puede automatizar la generación de contenido de
+correo electrónico, adaptando cada correo a las preferencias,
+comportamientos e historial de compras de cada cliente.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  GPT-4 Imagen del sitio web de GPT-4. GPT-4, la última iteración de la
+  IA generativa de OpenAI, cuenta con mejoras drásticas sobre las
+  capacidades de procesamiento de lenguaje natural de GPT 3.5.
+\end{enumerate}
+
+Al comparar el rendimiento de GPT-3.5 frente a GPT-4, es fácil ver que
+GPT-4 no es simplemente una mejora lineal en el procesamiento del
+lenguaje natural.
+
+Supuestamente entrenado en un billón de parámetros, se considera el
+modelo de lenguaje más grande del mercado. La diferencia es bastante
+evidente. De los dos modelos GPT, GPT-4 no solo comprende y genera mejor
+texto, sino que tiene la capacidad de procesar imágenes y videos, lo que
+lo hace más versátil.
+
+¡Importante! Sin embargo, vale la pena señalar que, aunque GPT-4 integra
+tanto el procesamiento de datos visuales como textuales con respecto a
+la entrada, solo puede generar respuestas en formato de texto.
+
+Mejores casos de uso:
+
+\begin{itemize}
+\item
+  Creación de sitios web
+\item
+  Creación de contenido dinámico: GPT-4 puede generar contenido de alta
+  calidad y contextualmente relevante, desde artículos hasta entradas de
+  blog, basado en los prompts del usuario y sus datos de entrenamiento.
+  Su competencia en la traducción multilingüe permite atender sin
+  esfuerzo a una audiencia global a través de contenido localizado.
+\item
+  Prompts de diseño:el modelo multimodal puede sugerir imágenes
+  relevantes o temas visuales con el contenido que genera. Esto
+  simplifica las decisiones de diseño para los desarrolladores de sitios
+  web. Contenido interactivo:GPT-4 puede impulsar secciones interactivas
+  de preguntas y respuestas, secciones dinámicas de preguntas frecuentes
+  y chatbots de IA en sitios web para involucrar a los visitantes y
+  proporcionar respuestas en tiempo real.
+\item
+  Monetización
+\item
+  Publicidad dirigida: las habilidades de GPT-4 para combinar texto
+  atractivo con imágenes relevantes pueden ayudarte a crear campañas
+  publicitarias cautivadoras que atraigan a los usuarios de manera
+  efectiva.
+\item
+  Experiencias de usuario personalizadas: a través de sus vastos datos
+  de entrenamiento y comprensión de las señales de texto y visuales,
+  GPT-4 puede proporcionar una experiencia web altamente personalizada,
+  ajustando el contenido que genera en función de los comportamientos y
+  preferencias individuales del usuario.
+\item
+  Marketing
+\item
+  Colaboraciones con influencers: GPT-4 puede cambiar las reglas del
+  juego para las colaboraciones de influencers. Su capacidad para crear
+  contenido que se alinea tanto con la marca del influencer como con el
+  negocio colaborador asegura que las campañas sean efectivas,
+  auténticas y resuenen con las audiencias deseadas.
+\item
+  Marketing de video: GPT-4 simplifica el proceso de marketing de video
+  produciendo guiones convincentes y sugiriendo elementos visuales
+  efectivos. Su capacidad para crear narrativas e integrar mensajes
+  clave ayuda a que el video capte la atención del espectador y logre
+  sus objetivos de marketing.
+\end{itemize}
+
+Lectura sugerida
+
+Consulta nuestra guía sobre cómo crear una página web con ChatGPT
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Gemini Imagen del sitio web de Gemini Gemini es un nuevo chatbot de
+  LLM desarrollado por Google AI. Está entrenado en un enorme conjunto
+  de datos de texto y código. Esto lo hace capaz de producir texto,
+  traducir varios idiomas, crear código, generar contenido variado y
+  proporcionar respuestas informativas a las preguntas.
+\end{enumerate}
+
+Gemini, uno de los principales modelos de lenguaje multimodal de gran
+tamaño, también puede acceder a datos del mundo real a través de Google
+Search. Esto le permite comprender y abordar un espectro más amplio de
+prompts y consultas.
+
+\hypertarget{mejores-casos-de-uso-2}{%
+\subparagraph{Mejores casos de uso:}\label{mejores-casos-de-uso-2}}
+
+\begin{itemize}
+\item
+  Creación de sitios web
+\item
+  Gráficos de alta calidad: Gemini puede generar gráficos de alta
+  calidad que son relevantes para el contenido del sitio web. Estos
+  gráficos se pueden utilizar para crear encabezados llamativos, botones
+  de llamada a la acción y otros elementos que harán que el sitio web
+  sea visualmente más atractivo.
+\item
+  Creación de diseños efectivos: Gemini puede analizar el contenido de
+  un sitio web y los patrones de tráfico para crear un diseño que sea
+  fácil de navegar. Esto puede ayudar a mejorar la experiencia del
+  usuario en el sitio web y aumentar las conversiones.
+\item
+  Monetización
+\item
+  Mejora de las apariencias: usar Gemini para el diseño web puede
+  optimizar el proceso creativo, permitiendo a los desarrolladores
+  generar diseños responsivos e interfaces de usuario intuitivas con
+  perspectivas impulsadas por la IA. Gemini también puede sugerir
+  cambios de diseño adaptados al público objetivo del sitio web que
+  hagan más que tomen medidas mientras navegan por tu sitio.
+\item
+  Marketing
+\item
+  Copy publicitario impulsado por IA: Gemini puede generar copy
+  publicitario y materiales promocionales impulsados por IA que se
+  adapten al contenido del sitio web y a la audiencia objetivo, lo que
+  ayuda a aumentar la conciencia de marca, impulsar el tráfico y generar
+  clientes potenciales.
+\item
+  Diseños efectivos: Gemini puede crear diseños efectivos para anuncios
+  y materiales promocionales que sean fáciles de leer y entender. Esto
+  puede ayudar a garantizar que el mensaje del anuncio sea claro y
+  conciso. \#\#\#\#\#\# Lectura sugerida Consulta nuestra guía sobre
+  cómo crear un sitio web con Gemini
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  LlaMa Sitio web de LlaMa. LlaMA es un nuevo modelo de lenguaje grande
+  de código abierto desarrollado por Meta AI que aún está en desarrollo.
+  Está diseñado para ser un LLM versátil y potente que se puede utilizar
+  para diversas tareas, incluyendo la resolución de consultas, la
+  comprensión del lenguaje natural y la comprensión de lectura.
+\end{enumerate}
+
+LlaMA es el resultado del enfoque especializado de Meta en modelos de
+aprendizaje de idiomas para aplicaciones educativas. Las habilidades del
+LLM pueden convertirlo en un asistente de inteligencia artificial ideal
+para plataformas de tecnología educativa.
+
+\hypertarget{mejores-casos-de-uso-3}{%
+\subparagraph{Mejores casos de uso:}\label{mejores-casos-de-uso-3}}
+
+\begin{itemize}
+\item
+  Sitios web
+\item
+  Experiencia de aprendizaje personalizada: la integración de LlaMA en
+  plataformas de aprendizaje de idiomas y otros sitios web de tecnología
+  educativa puede ayudar a ofrecer una experiencia de tutoría
+  personalizada con ejercicios interactivos. Mejor interactividad: LlaMA
+  también podría usarse para generar ejercicios interactivos que ayuden
+  a los estudiantes a practicar sus habilidades de gramática,
+  vocabulario y comprensión. El LLM también puede ampliar estas ofertas
+  para ayudar a enseñar a los estudiantes lenguajes de programación.
+\item
+  Monetización
+\item
+  Suscripción y contenido premium: los sitios web educativos pueden
+  monetizar su currícula con LlaMA utilizando modelos de suscripción y
+  planes de contenido premium que brinden acceso a los usuarios a
+  tutorías personalizadas de LlaMA.
+\item
+  Marketing
+\item
+  Creación de contenido atractivo: LlaMa se puede utilizar para crear
+  resúmenes de lecciones atractivos y contenido interactivo para
+  promocionar plataformas de aprendizaje de idiomas en las redes
+  sociales. Puede integrarse con la herramienta Make-A-Video de Meta
+  para hacer videos cortos sobre las últimas lecciones. Su naturaleza de
+  código abierto también permite una fácil integración con otras
+  herramientas de IA para redes sociales para ayudar a tu marca a
+  construir presencia en redes sociales.
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  Falcon Imagen del sitio de Falcon LLM. Falcon es un modelo de lenguaje
+  de código abierto desarrollado por el Instituto de Innovación
+  Tecnológica. Recientemente superó a LlaMa en la tabla de clasificación
+  de Open LLM de Hugging Face como el mejor modelo de lenguaje.
+\end{enumerate}
+
+Falcon es un modelo autorregresivo que se entrena con un conjunto de
+datos de mayor calidad, incluida una enorme combinación de texto y
+código, que cubre muchos idiomas y dialectos. También utiliza una
+arquitectura más avanzada, que procesa los datos de manera más eficiente
+y hace mejores predicciones.
+
+Por lo tanto, este nuevo modelo preentrenado ha utilizado menos
+parámetros para aprender (40 mil millones) que los mejores modelos de
+PNL.
+
+\hypertarget{mejores-casos-de-uso-4}{%
+\subparagraph{Mejores casos de uso:}\label{mejores-casos-de-uso-4}}
+
+\begin{itemize}
+\item
+  Creación de sitios web
+\item
+  Sitios web multilingües: usar Falcon para sitios web multilingües
+  garantiza una traducción y localización sin problemas, mejorando la
+  experiencia del usuario. Este modelo de deepl learning puede ser una
+  herramienta valiosa para los negocios que quieren llegar a una
+  audiencia global. Mejora de la comunicación en el negocio: Las
+  capacidades de análisis de sentimientos de Falcon también pueden
+  utilizarse para mejorar la comunicación intercultural. Al entender los
+  matices de diferentes idiomas y culturas, Falcon puede ayudar a los
+  negocios a comunicarse de manera efectiva con clientes y socios en
+  todo el mundo.
+\item
+  Monetización
+\item
+  Mercados de nicho: el soporte multilingüe del LLM puede ayudarte a
+  hacer tu sitio web disponible en mercados de nicho en idiomas locales,
+  permitiéndote acceder a una nueva fuente de ingresos. Venta de espacio
+  publicitario: puedes vender espacio publicitario en tu sitio web
+  multilingüe a negocios que quieran llegar a una audiencia global.
+\item
+  Marketing
+\end{itemize}
+
+Creación de materiales de marketing localizados: puedes usar Falcon para
+crear materiales de marketing localizados, como folletos, páginas de
+destino y publicaciones en redes sociales adaptados a audiencias
+específicas. - Marketing personalizado: las capacidades de traducción de
+Falcon se pueden aprovechar para crear materiales de marketing
+personalizados en función de preferencias de idioma e intereses
+particulares.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{5}
+\tightlist
+\item
+  Cohere Imagen del sitio web de Cohere. Cohere es un modelo de lenguaje
+  grande desarrollado por una startup canadiense con el mismo nombre.
+  Este LLM de código abierto está entrenada en base a un conjunto de
+  datos diverso e inclusivo, lo que lo convierte en un experto en
+  manejar numerosos idiomas y acentos.
+\end{enumerate}
+
+Además, los modelos de Cohere están entrenados en base a un corpus de
+texto grande y diverso, lo que los hace más efectivos para manejar una
+amplia gama de tareas.
+
+\hypertarget{mejores-casos-de-uso-5}{%
+\subparagraph{Mejores casos de uso}\label{mejores-casos-de-uso-5}}
+
+\begin{itemize}
+\tightlist
+\item
+  Creación de sitios web
+\end{itemize}
+
+Colaboración efectiva en equipo: utilizar Cohere para la colaboración en
+equipo agiliza los procesos de desarrollo web. Este LLM proporciona
+herramientas web para la coordinación en tiempo real, el control de
+versiones y la comunicación de proyectos. Siendo de código abierto y
+basado en la nube, garantiza una fácil integración y amplia
+accesibilidad para todos los equipos. Optimización de la creación de
+contenido: Cohere se puede utilizar para optimizar el proceso de
+desarrollo de contenido generando texto, traduciendo y escribiendo
+diferentes tipos de contenido creativo. Esto puede ahorrar a los equipos
+de desarrollo web una cantidad significativa de tiempo y esfuerzo. -
+Monetización
+
+Acceso a la página web de pago: puedes utilizar la herramienta de
+procesamiento de pagos de Cohere para ofrecer diferentes niveles de
+acceso a los visitantes, como un plan básico gratuito y un plan premium
+por una tarifa mensual. - Servicios de suscripción: también puedes
+monetizar servicios o características adicionales por un costo extra.
+Esto podría incluir características como herramientas de colaboración
+avanzadas, más espacio de almacenamiento o acceso a una gama más amplia
+de recursos. - Marketing
+
+\begin{itemize}
+\tightlist
+\item
+  Contenido creativo: con Cohere, los equipos de marketing pueden crear
+  contenido creativo para copy de anuncios, publicaciones en redes
+  sociales y campañas de correo electrónico, mejorando el impacto de sus
+  estrategias promocionales.
+\item
+  Personalización de contenido: el contenido puede adaptarse a distintas
+  audiencias utilizando las capacidades multilingües, multi-acento y de
+  análisis de sentimientos de Cohere, aumentando la relevancia y
+  efectividad de cada iniciativa de marketing.
+\item
+  Seguimiento de la efectividad de la campaña: la API de Cohere se puede
+  utilizar para integrarse con otras herramientas de marketing de IA
+  para rastrear la efectividad de tus campañas de marketing. Puede
+  procesar los datos de la campaña para proporcionar información más
+  útil.
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{6}
+\tightlist
+\item
+  PaLM Imagen del LLM PaLM 2. PaLM es un modelo de lenguaje grande
+  desarrollado por Google AI. Este LLM se está convirtiendo en uno de
+  los modelos de lenguaje de IA más poderosos, ya que tiene acceso al
+  vasto conjunto de datos de Google para su entrenamiento.
+\end{enumerate}
+
+Representa un avance en el aprendizaje automático y la IA responsable.
+PaLM actualmente está en desarrollo, pero ya puede entender lenguaje,
+generar respuestas naturales a preguntas y ofrecer traducción
+automática, generación de código, resumen y otras capacidades creativas.
+
+PaLM también está diseñado teniendo en cuenta la privacidad y la
+seguridad de los datos. Es capaz de cifrar datos y protegerlos del
+acceso no autorizado. Esto lo hace ideal para proyectos sensibles, como
+la construcción de sitios web de comercio electrónico seguros y
+plataformas que manejan información de usuario sensible.
+
+\hypertarget{mejores-casos-de-uso-6}{%
+\subparagraph{Mejores casos de uso:}\label{mejores-casos-de-uso-6}}
+
+\begin{itemize}
+\tightlist
+\item
+  Creación de sitios web
+\end{itemize}
+
+Sitios de comercio electrónico: PaLM es ideal para construir sitios web
+y plataformas de comercio electrónico seguros que manejan información
+sensible del usuario. Este modelo de lenguaje grande puede cifrar
+números de tarjetas de crédito y otros datos sensibles, así como
+monitorear el tráfico del sitio web en busca de actividad sospechosa. -
+Personalización de experiencias de usuario: PaLM se puede utilizar para
+personalizar las experiencias de usuario en sitios web. Puede recomendar
+productos a los usuarios en base a sus intereses. - Diseños creativos:
+los diseñadores web pueden apoyarse en PaLM para generar diseños más
+creativos para sitios web visualmente atractivos y fáciles de usar. -
+Monetización:
+
+\begin{itemize}
+\tightlist
+\item
+  Protección de datos y privacidad: tu sitio web puede destacar que está
+  utilizando PaLM para la privacidad y protección de datos. Esto puede
+  ayudar a construir confianza con los usuarios y animarlos a compartir
+  su información personal.
+\item
+  de soluciones de protección de datos y privacidad: PaLM puede ser
+  utilizado para desarrollar y vender soluciones de protección de datos
+  y privacidad para negocios. Estas soluciones pueden ayudar a los
+  negocios a proteger sus datos de acceso no autorizado.
+\item
+  Marketing de la seguridad: destacar la seguridad de los sitios web
+  impulsados por PaLM puede ser una estrategia de marketing clave para
+  los negocios, enfatizando el cifrado y la protección contra el acceso
+  no autorizado para fomentar la confianza del cliente.
+\item
+  Marketing:
+\end{itemize}
+
+Asociación con organizaciones de protección de datos y privacidad: al
+forjar asociaciones con organizaciones de protección de datos y
+privacidad, los negocios pueden reforzar la credibilidad de sus sitios,
+mostrando su compromiso con la seguridad y el cumplimiento regulatorio.
+Estudios de caso: elaborar estudios de caso que subrayen las ventajas de
+emplear PaLM para experiencias de sitios web seguras y personalizadas
+puede servir como materiales de marketing potentes para negocios y
+clientes potenciales.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{7}
+\tightlist
+\item
+  Claude v1 Página de Claude. Claude v1 es un modelo grande de lenguaje
+  desarrollado por la startup de IA americana Anthropic. Es un asistente
+  de IA versátil diseñado específicamente para simplificar la creación,
+  administración y optimización de sitios web.
+\end{enumerate}
+
+Con sus avanzadas capacidades de lenguaje natural, Claude v1 facilita a
+cualquiera la construcción, ejecución y crecimiento de un sitio web sin
+necesidad de habilidades técnicas avanzadas.
+
+Claude utiliza una arquitectura más avanzada que otros LLMs, lo que le
+permite procesar información de manera más eficiente y hacer mejores
+predicciones.
+
+\hypertarget{mejores-casos-de-uso-7}{%
+\subparagraph{Mejores casos de uso:}\label{mejores-casos-de-uso-7}}
+
+\begin{itemize}
+\item
+  Creación de sitios web
+\item
+  Gestión automatizada: Claude v1 simplifica la gestión de sitios web al
+  automatizar tareas tediosas, permitiendo a los dueños de sitios
+  concentrarse en estrategias de nivel superior y en la creación de
+  contenido de marketing.
+\item
+  Creación de contenido: puede generar de forma autónoma artículos
+  frescos basados en temas clave, responder a las consultas de los
+  clientes utilizando sus avanzadas capacidades de conversación y
+  proporcionar análisis en tiempo real sin necesidad de revisar
+  manualmente los paneles de control.
+\item
+  SEO: Claude v1 puede manejar la optimización técnica para ofrecer
+  mejoras de SEO y mejoras de velocidad del sitio en segundo plano.
+  Recomendará e implementará cambios para mejorar el rendimiento del
+  sitio.
+\item
+  Monetización
+\item
+  Engagement del cliente: Claude v1 puede transformar la monetización
+  del sitio maximizando la participación del cliente. Al analizar los
+  comportamientos de los visitantes, el modelo de IA puede entregar
+  contenido personalizado, optimizar sugerencias de productos para
+  plataformas de comercio electrónico y seleccionar artículos que
+  resuenen con cada visitante.
+\item
+  Personalización de anuncios: Claude v1 también puede seleccionar
+  anuncios adaptados a las demografías y comportamientos de los
+  visitantes para optimizar los ingresos por publicidad. Sus capacidades
+  de personalización pueden ayudar a mejorar la retención de clientes,
+  amplificando los ingresos de las ventas, membresías y publicidad.
+\item
+  Marketing
+\item
+  Optimización de campañas: el modelo base no solo puede identificar
+  segmentos de audiencia ideales, sino también optimizar automáticamente
+  las campañas para un rendimiento máximo. En términos de SEO, también
+  puede crear contenido alineado con los términos de búsqueda
+  principales.
+\item
+  Email marketing: también puedes automatizar campañas de marketing por
+  correo electrónico utilizando la capacidad de Claude para segmentar
+  automáticamente los contactos y desplegar mensajes de correo
+  electrónico en función del comportamiento, mejorando la participación
+  del usuario. Mejora de páginas de destino: Claude v1 puede crear y
+  perfeccionar páginas de destino de forma autónoma utilizando pruebas
+  A/B para obtener mejores conversiones.
+\end{itemize}
+
+Lectura sugerida * 26 herramientas para programar con inteligencia
+artificial*
+
+\hypertarget{cuxf3mo-elegir-el-mejor-llm-para-tu-sitio-web}{%
+\subsubsection{Cómo elegir el mejor LLM para tu sitio
+web}\label{cuxf3mo-elegir-el-mejor-llm-para-tu-sitio-web}}
+
+Para optimizar tu sitio web, es crucial seleccionar el modelo de
+lenguaje grande adecuado. Así es cómo:
+
+\begin{itemize}
+\tightlist
+\item
+  Integración con hosting
+\end{itemize}
+
+El rendimiento y éxito de los sitios web con grandes modelos de lenguaje
+están fundamentalmente vinculados a la infraestructura subyacente. Los
+servicios de hosting de Hostinger están específicamente optimizados para
+sitios web impulsados por IA con necesidades computacionales exigentes.
+
+Hostinger también ofrece un conjunto de características de IA,
+incluyendo el creador de páginas web de Hostinger, el creador de
+logotipos y el escritor, que hacen que el proceso de creación de sitios
+web sea optimizado y amigable para principiantes.
+
+    \hypertarget{rendimiento-y-capacidades}{%
+\subsection{Rendimiento y capacidades}\label{rendimiento-y-capacidades}}
+
+
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.0779}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.2273}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1688}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.2403}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1429}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+LLM
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Procesamiento de Lenguaje Natural
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Generación de contenido
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Soporte multilingüe
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Facilita la colaboración en equipo
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Privacidad de datos
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+GPT -- 3.5 & Bueno & Muy Bueno & Bueno & A través de API & Regular \\
+GPT -- 4 & Excelente & Excelente & Excelente & A través de API &
+Regular \\
+Gemini & Excelente & Excelente & Excelente & A través de API & Bueno \\
+LlaMa & Muy Bueno & Muy Bueno & Excelente & Directamente & Regular \\
+Falcon & Muy Bueno & Excelente & Excelente & Directamente & Bueno \\
+Cohere & Excelente & Excelente & Muy Bueno & Directamente & Bueno \\
+PaLM & Excelente & Bueno & Muy Bueno & A través de API & Excelente \\
+Claude v1 & Excelente & Excelente & Muy Bueno & A través de API & \\
+\end{longtable}
+
+    \hypertarget{costo-y-asequibilidad}{%
+\subsection{Costo y asequibilidad}\label{costo-y-asequibilidad}}
+
+Ahora profundicemos en las consideraciones de costo y asequibilidad para
+tu LLM:
+
+\begin{itemize}
+\tightlist
+\item
+  GPT-3.5: desde \$0,002/1000 tokens , equivalente a aproximadamente 750
+  palabras
+\item
+  GPT-4: desde \$0,03/1000 tokens
+\item
+  Gemini: gratis
+\item
+  Llama: gratis
+\item
+  Falcon: gratis
+\item
+  Cohere: desde \$0,4/1 millón de tokens
+\item
+  PaLM: vista previa pública gratuita, las versiones pagas se anunciarán
+  más cerca de la disponibilidad general.
+\item
+  Claude v1: a partir de \$1,63/millón de tokens para Prompt y
+  \$5,51/millón de tokens para Completion
+\end{itemize}
+
+\hypertarget{conclusiuxf3n}{%
+\subsection{Conclusión}\label{conclusiuxf3n}}
+
+Tener el mejor modelo de lenguaje grande a tu disposición es esencial
+para garantizar un funcionamiento efectivo en tu sitio. Dado que algunos
+de los LLMs discutidos aún están en desarrollo, este artículo también te
+guió a través de cómo se entrenan los grandes modelos de lenguaje.
+
+Este conocimiento te ayudará a tomar una decisión más informada al
+introducir modelos de lenguaje en tu proceso de desarrollo de sitios
+web.
+
+Estas son nuestras recomendaciones sobre los mejores LLMs para tu sitio
+web:
+
+Sitios web pequeños: como los blogs, pueden funcionar bien con un LLM
+como GPT-3.5, que puede generar contenido de manera asequible. También
+se puede utilizar para una tarea específica, como responder preguntas y
+traducir idiomas. Sitios web medianos: pueden beneficiarse de LLMs más
+avanzados, como GPT-4 o Gemini. Son más potentes que GPT-3.5 y se pueden
+utilizar para tareas más complejas. Sitios web grandes: pueden ser más
+útiles los LLMs de código abierto, como LlaMA, Falcon o Cohere. Estos
+pueden facilitar la personalización y automatización de la experiencia
+del sitio web para mejorar la comodidad del visitante. Finalmente, el
+mejor LLM para tu sitio web dependerá de tu presupuesto, tus necesidades
+y el tipo de tu sitio web. Si estás atrapado entre dos LLM, siempre
+puedes probar cada uno individualmente y elegir el que mejor se adapte a
+ti.
+
+Si conoces otros LLMs que sean capaces de competir con los grandes
+jugadores mencionados anteriormente, cuéntanos en la sección de
+comentarios a continuación.
+
+    \hypertarget{preguntas-frecuentes-sobre-llm}{%
+\subsection{Preguntas Frecuentes sobre
+LLM}\label{preguntas-frecuentes-sobre-llm}}
+
+Abordemos algunas consultas frecuentes sobre modelos de lenguaje
+grandes.
+
+\begin{itemize}
+\tightlist
+\item
+  ¿Cómo puedo beneficiarme al usar LLM para la creación de sitios web?
+  Los modelos de lenguaje grandes (LLMs) ofrecen una amplia gama de
+  beneficios para la creación de sitios web. Pueden generar contenido de
+  alta calidad, incluyendo publicaciones de blog, artículos y
+  descripciones de productos. Además, pueden atender las consultas de
+  los visitantes, mejorando la experiencia del usuario y potencialmente
+  aumentando el tráfico del sitio.
+\end{itemize}
+
+Para un alcance global, los LLM facilitan la traducción de sitios web a
+varios idiomas. Además, pueden mejorar la participación del usuario
+personalizando las experiencias del sitio web, sugiriendo productos o
+contenido adaptado a los intereses de los visitantes.
+
+\begin{itemize}
+\tightlist
+\item
+  ¿Pueden los modelos de lenguaje como GPT-3.5 y GPT-4 ayudar a
+  monetizar mi sitio web?
+\end{itemize}
+
+Modelos de lenguaje grandes como GPT-3.5 y GPT-4 son revolucionarios
+cuando se trata de la monetización de sitios web con IA. Pueden producir
+contenido convincente, atrayendo visitantes y prolongando su
+participación en el sitio. Además, permiten la creación de anuncios
+precisos con mayor potencial de clics. También aumentan las ventas
+personalizando la experiencia del usuario para cada visitante.
+
+\begin{itemize}
+\tightlist
+\item
+  ¿Cómo se entrenan los grandes modelos de lenguaje para ser tan
+  poderosos?
+\end{itemize}
+
+Los modelos de lenguaje grandes se entrenan utilizando enormes conjuntos
+de datos que contienen miles de millones de palabras a través de un
+proceso llamado modelado de lenguaje. Este proceso permite a los LLMs
+aprender las relaciones estadísticas entre palabras y frases. Los
+inmensos volúmenes de datos y el refinamiento iterativo del
+entrenamiento los hacen expertos en entender patrones de lenguaje
+intrincados para generar texto coherente y gramaticalmente correcto.
+
+-¿Cuáles son los modelos de lenguaje grandes más populares?
+
+Algunos de los principales grandes modelos de lenguaje incluyen GPT-3.5,
+GPT-4, Gemini, Cohere, PaLM y Claude v1. Estos LLMs destacan en tareas
+como la generación de texto, la traducción de idiomas, la creación de
+contenido creativo, la respuesta a consultas y la generación de código.
+
+\begin{itemize}
+\tightlist
+\item
+  ¿Los modelos de lenguaje grandes comprenden lo que están diciendo?
+\end{itemize}
+
+Aunque los modelos de lenguaje grandes pueden generar textos relevantes
+y gramaticalmente correctos, realmente no ``entienden'' el contenido
+como lo hacen los humanos. Su fortaleza radica en reconocer patrones de
+grandes conjuntos de datos, no en la comprensión genuina.
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
+\end{document}

@@ -1,0 +1,509 @@
+\documentclass[a4paber,12pt]{article}
+
+% Paquetes básicos
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{setspace}
+\usepackage{lipsum}
+\usepackage{hyperref}
+\usepackage{amsmath, amssymb}
+\usepackage{tikz, pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{xurl}         % Alternativa moderna, 
+
+
+%\newcommand{\email}{jorge.ayona@estudiante.ucsm.edu.pe}
+
+\newcommand{\orcid}{\href{https://orcid.org/0009-0006-6551-9681}{ORCID: 0009-0006-6551-9681}}
+
+
+% Márgenes
+\geometry{margin=2.5cm}
+
+% Encabezado y pie de página
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\textit{Usmp}}
+\lhead{\textit{Proyecto De Tesis}}
+\rfoot{\thepage}
+
+% Espaciado
+\setstretch{1.2}
+
+% Títulos
+\titleformat{\section}{\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection}{1em}{}
+
+% Comienzo del documento
+\begin{document}
+	
+	% PORTADA
+	\begin{titlepage}
+		\centering
+		\vspace*{2cm}
+		
+		{\Huge\bfseries Universidad De San Mart\'in de Porres \par}
+		\vspace{1cm}
+		
+		{\LARGE\bfseries Anteproyecto De Tesis\par}
+		\vfill
+		
+		\includegraphics[width=0.3\textwidth]{logo-usmp.png} % Reemplaza "logo.png" con el nombre del archivo del logo si lo tienes.
+		
+		%\newpage
+		\vspace*{5cm}
+		
+		\begin{center}
+			\texttt{----------------------------------------------------------------------}\\[1ex]
+			\textbf{Certificado de Autenticidad Nº 2010-1-3105-0007}\\
+			Certificado por el Instituto de Investigación\\[1ex]
+			\texttt{----------------------------------------------------------------------}
+		\end{center}
+		
+		\vfill
+		
+		{\large Jorge Ayona \\ \orcid \\}
+		{\large \today\par}
+	\end{titlepage}
+	
+	\tableofcontents
+	%\newpage
+	
+	
+	\section*{Índice de contenido}
+	\begin{enumerate}
+		\item Introducción
+		\item Parte I
+		\begin{enumerate}
+			\item Antecedentes de la empresa
+			\item Mercados
+			\item Áreas de operación
+			\item Competencia
+			\item Servicios
+			\item Principales clientes
+			\item Número de trabajadores
+			\item Visión / Misión / Valores
+			\item Ventas
+			\item Análisis FODA y puntos críticos
+		\end{enumerate}
+		\item Parte II
+		\begin{enumerate}
+			\item Dimensión interna
+			\item Calificación interna
+			\item Dimensión externa
+			\item Calificación externa
+			\item Resultado RSE de Zetramsa
+		\end{enumerate}
+		\item Parte III
+		\begin{enumerate}
+			\item Matriz de definición de \textit{stakeholders}
+			\item Conclusiones y recomendaciones
+		\end{enumerate}
+	\end{enumerate}
+	
+	\newpage
+	
+	\section{Introducción}
+	Como parte del curso de Responsabilidad Social Empresarial (RSE), analizamos a Zetramsa S.A.C., empresa dedicada al transporte de explosivos e hidrocarburos co sede en Lima. Agradecemos a su Gerencia Administrativa, especialmente a Judith Ticlavilca, por facilitar el trabajo de campo.
+	
+	Los objetivos fueron:
+	\begin{itemize}  
+		\item Elaborar una matriz de \textit{stakeholders} con 
+		\item Evaluar a la empresa Zetramsa S.A.C. en cuanto a su gestión de Responsabilidad Social Empresarial.
+		\item Proponer acciones de mejora para garantizar un crecimiento sostenible.
+	\end{itemize}
+	
+	\section{Definiciones}
+	
+	\textbf{Responsabilidad Social Empresarial (RSE):} Contribución activa y voluntaria al mejoramiento social, económico y ambiental por parte de las empresas, generalmente con el objetivo de mejorar su situación competitiva y valorativa y su valor añadido.
+	
+	\section{Método A Emplear}
+	
+	\begin{enumerate}
+		\item Recopilar los antecedentes de la empresa.
+		\item Elaboración de un cuestionario y un sistema de calificación original para evaluar la gestión de RSE mediante el siguiente esquema:
+		
+		\begin{description}[labelindent=0cm, leftmargin=1.5cm]
+			\item[I. Dimensión Interna]
+			\begin{enumerate}[label=(\alph*)]
+				\item Cumplimiento de las leyes.
+				\item Ética y transparencia.
+				\item Desarrollo del capital humano.
+				\item Mitigación de impactos negativos.
+			\end{enumerate}
+			
+			\item[II. Dimensión Externa]
+			\begin{enumerate}[label=(\alph*)]
+				\item Beneficios a los colaboradores.
+				\item Proyección a las familias.
+				\item Proyección a las comunidades.
+				\item Proyección a nivel regional y nacional.
+			\end{enumerate}
+		\end{description}
+		
+		\item Identificar y definir los grupos de interés de la empresa.
+		\item Poner a consideración de la Gerencia Administrativa las conclusiones y recomendaciones para su implementación.
+	\end{enumerate}
+	
+	\section{Procedimiento}
+	
+	La presente investigación emplea una metodología de tipo cualitativa y aplicada, con un enfoque descriptivo. El objetivo es evaluar la gestión de Responsabilidad Social Empresarial (RSE) en la empresa Zetramsa S.A.C. y proponer acciones de mejora que permitan su fortalecimiento.
+	
+	\subsection{Recopilación de antecedentes de la empresa}
+	Se realizará una revisión documental de fuentes internas y externas para recopilar información general de la empresa, su historia, misión, visión, valores corporativos, estructura organizacional y políticas existentes relacionadas con la RSE.
+	
+	\subsection{Elaboración del instrumento de evaluación}
+	Se diseñará un cuestionario original para evaluar la gestión de la RSE, el cual incluirá un sistema de calificación propio. Este instrumento se organizará en dos grandes dimensiones: interna y externa.
+	
+	\begin{enumerate}[label=\Alph*.]
+		\item \textbf{Dimensión Interna}
+		\begin{enumerate}[label=\alph*)]
+			\item Cumplimiento de las leyes.
+			\item Ética y transparencia.
+			\item Desarrollo del capital humano.
+			\item Mitigación de impactos negativos.
+		\end{enumerate}
+		
+		\item \textbf{Dimensión Externa}
+		\begin{enumerate}[label=\alph*)]
+			\item Beneficios a los colaboradores.
+			\item Proyección a las familias.
+			\item Proyección a las comunidades.
+			\item Proyección a nivel regional y nacional.
+		\end{enumerate}
+	\end{enumerate}
+	
+	\section*{Parte I: Fundamentos Institucionales}
+	
+	\subsection{Misión}
+	Somos una empresa dedicada al transporte terrestre, comprometida con brindar un servicio de calidad a nuestros clientes. Nos esforzamos en cumplir nuestra misión con responsabilidad, puntualidad y seguridad, fomentando el trabajo en equipo y promoviendo el desarrollo de nuestros colaboradores.
+	
+	\subsection{Visión}
+	Ser una empresa líder en el rubro de transporte terrestre, reconocida por su calidad de servicio, confianza y profesionalismo. Buscamos mejorar continuamente para satisfacer las necesidades de nuestros clientes y contribuir al desarrollo del país.
+	
+	\subsection{Políticas de la Empresa}
+	\begin{itemize}
+		\item Brindar servicios de transporte de calidad, priorizando la seguridad y satisfacción del cliente.
+		\item Cumplir con las normas legales vigentes en materia de transporte y seguridad vial.
+		\item Fomentar la capacitación constante de nuestro personal para lograr una mejora continua.
+		\item Proteger el medio ambiente mediante prácticas responsables y sostenibles.
+		\item Promover un ambiente laboral de respeto, equidad y desarrollo profesional.
+	\end{itemize}
+	
+	\subsection{Valores Institucionales}
+	\begin{itemize}
+		\item \textbf{Responsabilidad:} Cumplimos nuestros compromisos con ética y profesionalismo.
+		\item \textbf{Puntualidad:} Valoramos el tiempo de nuestros clientes y colaboradores.
+		\item \textbf{Seguridad:} Priorizamos la integridad de nuestros usuarios y trabajadores.
+		\item \textbf{Trabajo en equipo:} Fomentamos la colaboración y el respeto mutuo.
+		\item \textbf{Compromiso:} Nos dedicamos a alcanzar los objetivos de la empresa con esfuerzo y dedicación.
+	\end{itemize}
+	
+	\section*{Parte I – Descripción de la Empresa}
+	\subsection{Antecedentes}
+	Transportes Zetramsa S.A.C., fundada el 3 de noviembre de 1987, inició con transporte de carga y amplió sus operaciones en 1994 con hidrocarburos. En 2005 incorporó explosivos. Mantiene oficinas en Lima y Arequipa, con estructura familiar.
+	
+	\subsection{Mercados}
+	Explosivos: EXSA, FAMESA.\\
+	Hidrocarburos: REPSOL, PRIMAX.
+	
+	\subsection{Áreas de operación}
+	Lima y Arequipa.
+	
+	\subsection{Competencia}
+	Cli, Servimelsa, Acoinsa, Transportes Díaz, Terra Cargo S.A.C.
+	
+	\subsection{Servicios}
+	Transporte de explosivos (desde 2005) y de combustibles (desde 1994).
+	
+	\subsection{Principales clientes}
+	EXSA S.A., FAMESA S.A.C., REPSOL, PRIMAX.
+	
+	\subsection{Número de trabajadores}
+	40 en Lima y 32 en Arequipa.
+	
+	\subsection{Visión / Misión / Valores}
+	\textbf{Visión:} Ser líder nacional e internacional en el transporte de explosivos y combustibles.\\
+	\textbf{Misión:} Satisfacer al cliente con atención personalizada, seguridad, responsabilidad y mejora continua.\\
+	\textbf{Valores:} Lealtad, Seriedad, Responsabilidad, Honradez, Eficiencia.
+	
+	\subsection{Ventas}
+	Gráfico de ventas por cliente (2009, en S/ 000):
+	
+	\begin{figure}[h!]
+		\centering
+		\begin{tikzpicture}
+			\begin{axis}[
+				ybar, bar width=0.8cm, width=12cm, height=6cm,
+				ylabel={Ventas (S/ 000)},
+				symbolic x coords={Primax,Famesa,Exsa,Repsol,Otros},
+				xtick=data, nodes near coords, nodes near coords align={vertical},
+				]
+				\addplot coordinates {(Primax,350) (Famesa,280) (Exsa,220) (Repsol,150) (Otros,100)};
+			\end{axis}
+		\end{tikzpicture}
+		\caption{Ventas por cliente en 2009 (en miles de soles)}
+	\end{figure}
+	
+	\subsection{Análisis FODA y puntos críticos}
+	\textit{(Aquí puede insertarse la tabla FODA y la discusión de estrategias).}
+	
+	\section{Parte II – Evaluación RSE}
+	
+	\subsection{Cuestionario y escala}
+	Se aplicó a Judith Ticlavilca. Escala de respuesta: “Sí” = indicador cumplido; “No” = incumplido.\\
+	Impacto = (Sí / total preguntas) × 100\%.\\
+	Escala vigesimal al final.
+	
+	\subsection{Resultados – Dimensión interna}
+	
+	\begin{center}
+		\begin{tabular}{|l|c|c|}
+			\hline
+			\textbf{Indicador} & \textbf{Sí/Total} & \textbf{\% Cumplimiento} \\
+			\hline
+			Leyes laborales & 4/6 & 67\% \\
+			Leyes tributarias & 2/2 & 100\% \\
+			Ética y transparencia & 1/5 & 20\% \\
+			Capital humano & 3/5 & 60\% \\
+			Ambiental & 2/3 & 67\% \\
+			Mitigación de impactos & 3/4 & 75\% \\
+			ISO (calidad) & 2/4 & 50\% \\
+			\hline
+			\textbf{Promedio Interna} & & \textbf{62.7\%} \\
+			\hline
+		\end{tabular}
+	\end{center}
+	
+	\subsection{Resultados – Dimensión externa}
+	
+	\begin{center}
+		\begin{tabular}{|l|c|c|}
+			\hline
+			\textbf{Indicador} & \textbf{Sí/Total} & \textbf{\% Cumplimiento} \\
+			\hline
+			Beneficios a los colaboradores & 1/5 & 20\% \\
+			Proyección a las familias & 1/3 & 33\% \\
+			Comunidades & 1/4 & 25\% \\
+			Proyección regional/nacional & 0/4 & 0\% \\
+			\hline
+			\textbf{Promedio Externa} & & \textbf{19.5\%} \\
+			\hline
+		\end{tabular}
+	\end{center}
+	
+	\subsection{Promedio general}
+	\[
+	\text{Promedio RSE} = \frac{62.7 + 19.5}{2} = 41.1\%
+	\]
+	Escala vigesimal: \( 41.1 \times 0.2 = 8.22 \) → \textbf{Desaprobado} en gestión RSE.
+	\newpage
+	\subsection{Gráfico comparativo}
+	
+	\begin{figure}[h!]
+		\centering
+		\begin{tikzpicture}
+			\begin{axis}[
+				ybar, bar width=1cm, width=10cm, height=6cm,
+				ylabel={\% Cumplimiento},
+				symbolic x coords={Interna,Externa},
+				xtick=data, ymin=0, ymax=100,
+				nodes near coords, nodes near coords align={vertical},
+				]
+				\addplot coordinates {(Interna,62.7) (Externa,19.5)};
+			\end{axis}
+		\end{tikzpicture}
+		\caption{Cumplimiento por dimensión de RSE (\%)}
+	\end{figure}
+	
+	\newpage
+	
+	\section*{Parte III – Matriz de Stakeholders}
+	
+	\subsection{Círculo interior}
+	
+	\begin{longtable}{>{\raggedright\arraybackslash}p{4cm} >{\raggedright\arraybackslash}p{11cm}}
+		\toprule
+		\textbf{Stakeholder} & \textbf{Responsabilidad} \\
+		\midrule
+		\textbf{Consumidores} & 
+		\begin{itemize}
+			\item Transparencia en la información sobre precios, productos y servicios.
+			\item No prometer lo que no se pueda cumplir.
+		\end{itemize} \\
+		\textbf{Comunidades} & 
+		\begin{itemize}
+			\item Reconocimiento de la relación simbiótica.
+			\item Respeto por sus costumbres e idiosincrasia.
+			\item Colaboración para mantener y mejorar sus condiciones.
+		\end{itemize} \\
+		\textbf{Accionistas} & 
+		\begin{itemize}
+			\item Garantía sobre su inversión; maximizarla legítimamente.
+			\item Información detallada y oportuna sobre la marcha de la empresa.
+		\end{itemize} \\
+		\textbf{Colaboradores} & 
+		\begin{itemize}
+			\item Beneficios para ellos y sus familias; desarrollo personal.
+			\item Recursos, herramientas y capacitación para el desempeño de funciones.
+		\end{itemize} \\
+		\textbf{Proveedores} & 
+		\begin{itemize}
+			\item Colaboración en el desarrollo de productos según especificaciones.
+			\item Lealtad, salvo conducta poco ética.
+			\item Promoción de la responsabilidad social empresarial.
+		\end{itemize} \\
+		\bottomrule
+	\end{longtable}
+	\newpage
+	
+	\subsection*{3. Identificación de grupos de interés}
+	Se identificarán los stakeholders o grupos de interés vinculados a la empresa, tales como colaboradores, clientes, proveedores, comunidad local, organismos reguladores, entre otros, para comprender cómo impacta la gestión de la RSE en cada uno de ellos.
+	
+	\subsection*{4. Evaluación y validación con la gerencia}
+	Los resultados obtenidos del diagnóstico serán puestos a consideración de la Gerencia Administrativa de la empresa. A partir de ello, se propondrán conclusiones y recomendaciones específicas para la mejora continua y la implementación de un enfoque más sólido de RSE.
+	
+	
+	\section*{Parte III: Matriz de Definición de Grupos de Interés}
+	
+	\subsection*{Círculo Interior}
+	
+	\begin{longtable}{>{\raggedright\arraybackslash}p{4cm} >{\raggedright\arraybackslash}p{11cm}}
+		\toprule
+		\textbf{Stakeholder} & \textbf{Responsabilidad} \\
+		\midrule
+		\textbf{Consumidores} & 
+		\begin{itemize}
+			\item Transparencia en la información acerca de precios, productos, servicios.
+			\item No prometer cosas que no vamos a cumplir.
+		\end{itemize} \\
+		
+		\textbf{Comunidades} & 
+		\begin{itemize}
+			\item Reconocimiento de la relación simbiótica.
+			\item Respeto a sus costumbres e idiosincrasia.
+			\item Colaboración para mantener y mejorar sus condiciones.
+		\end{itemize} \\
+		
+		\textbf{Accionistas} & 
+		\begin{itemize}
+			\item Garantía sobre su inversión; maximizarla legítimamente.
+			\item Información detallada y oportuna sobre la marcha de la empresa.
+		\end{itemize} \\
+		
+		\textbf{Colaboradores} & 
+		\begin{itemize}
+			\item Beneficios para ellos y sus familias; desarrollo personal.
+			\item Recursos, herramientas y capacitación para el desempeño de funciones.
+		\end{itemize} \\
+		
+		\textbf{Proveedores} & 
+		\begin{itemize}
+			\item Colaboración en el desarrollo de productos según especificaciones.
+			\item Lealtad, salvo conducta poco ética.
+			\item Promoción de la Responsabilidad Social Empresarial.
+		\end{itemize} \\
+		
+		\textbf{Medio Ambiente} & 
+		\begin{itemize}
+			\item Reconocer el uso responsable de los recursos naturales.
+			\item Practicar normas internacionales de cuidado ambiental.
+		\end{itemize} \\
+		\bottomrule
+	\end{longtable}
+	
+	\newpage
+	
+	\subsection*{Círculo Exterior}
+	
+	\begin{longtable}{>{\raggedright\arraybackslash}p{4cm} >{\raggedright\arraybackslash}p{11cm}}
+		\toprule
+		\textbf{Stakeholder} & \textbf{Responsabilidad} \\
+		\midrule
+		
+		\textbf{Inversionistas / Analistas} & 
+		\begin{itemize}
+			\item Proporcionar información veraz, oportuna y técnicamente correcta para la toma de decisiones.
+		\end{itemize} \\
+		
+		\textbf{Medios de Comunicación} & 
+		\begin{itemize}
+			\item Mantener una relación cordial y comunicación fluida mediante comunicados y notas de prensa.
+		\end{itemize} \\
+		
+		\textbf{Activistas y ONG´s} & 
+		\begin{itemize}
+			\item Apoyar a organizaciones que trabajan en áreas desatendidas.
+			\item Destinar recursos a iniciativas sociales o ambientales.
+			\item Reconocer y considerar sus aportes como sociedad civil.
+		\end{itemize} \\
+		
+		\textbf{Industria / Competidores} & 
+		\begin{itemize}
+			\item Fomentar la sana competencia, la innovación y el servicio al cliente.
+			\item No incurrir en prácticas desleales.
+		\end{itemize} \\
+		
+		\textbf{Gobierno} & 
+		\begin{itemize}
+			\item Cumplimiento de normas legales y estándares técnicos.
+			\item Acatamiento de la legislación nacional.
+			\item Repudio a la corrupción en toda forma.
+		\end{itemize} \\
+		
+		\bottomrule
+	\end{longtable}
+	\newpage
+	\section*{Conclusiones y Recomendaciones}
+	
+	Considerando la información recopilada y las respuestas al Cuestionario de Evaluación, se concluye lo siguiente:
+	
+	\begin{enumerate}
+		\item El entorno en el que la empresa desarrolla sus actividades se encuentra en crecimiento:
+		\begin{enumerate}
+			\item El periódico \emph{Gestión} (\url{http://gestion.pe/noticia/294567/pbi-peruano-creceria6-durante-periodo-2010-2012}) muestra cifras alentadoras para el sector minero, en el cual la empresa participa transportando explosivos.
+			
+			\item Las obras de la Carretera Interoceánica representan otra oportunidad de desarrollo. No obstante, fuera de estos factores coyunturales, para que el crecimiento de la empresa sea sostenible, es necesario tomar las siguientes medidas:
+		\end{enumerate}
+		
+		\item Para garantizar un crecimiento sostenible, la empresa debe asegurar proactivamente la calidad de sus procesos.
+		\begin{enumerate}
+			\item Recomendamos que la empresa aplique el \textbf{Principio de Unidad de Dirección} en su gestión en la ciudad de Lima.
+			
+			\item Para optimizar el flujo de información entre la Dirección y el resto de la organización, recomendamos la adopción de un sistema \textbf{ERP (Enterprise Resource Planning)}.
+			
+			\item Recomendamos la implementación de mecanismos y filosofías de gestión como \textbf{CRM (Customer Relationship Management)} y \textbf{SCM (Supply Chain Management)}.
+			
+			\item La empresa debería adoptar un \textbf{modelo de Gestión de la Calidad} e iniciar el proceso de concientización previo a la obtención de la certificación \textbf{ISO 9001:2008}.
+		\end{enumerate}
+		
+		\item La calificación de la empresa en el ámbito de \textbf{Responsabilidad Social Empresarial (RSE)} es de \textbf{7,95}, lo cual, en una escala vigesimal, se considera \textbf{desaprobado}.
+		
+		\item La empresa debe subsanar las áreas deficientes en su gestión de RSE:
+		\begin{enumerate}
+			\item Recomendamos la implementación de una \textbf{filosofía y programa de RSE} que vaya más allá del simple cumplimiento de requisitos legales.
+			
+			\item Se recomienda adoptar la \textbf{Matriz de Definición de Responsabilidad Social Empresarial}.
+			
+			\item La empresa debería implementar un \textbf{Sistema de Gestión Ambiental}, considerando el impacto ambiental derivado de sus actividades.
+		\end{enumerate}
+	\end{enumerate}
+	
+	Al implementar estas acciones correctivas y preventivas, la empresa puede aprovechar la coyuntura actual y transformarse en una organización con un crecimiento viable y sostenible, generando un impacto favorable en sus \emph{stakeholders}.
+	
+	\section*{Referencias}
+	EFQM Foundation. (2020). \textit{The EFQM Model}. European Foundation for Quality Management.\\
+	Kanji, G. K., \& Sa, P. (2003). Measuring Leadership Excellence Using the EFQM Framework. \emph{Total Quality Management \& Business Excellence}, 14(6), 701–718.\\
+	Zairi, M. (1998). \textit{Business Process Management: A Boundaryless Approach to Modern Competitiveness}. Butterworth-Heinemann.
+	
+	
+\end{document}

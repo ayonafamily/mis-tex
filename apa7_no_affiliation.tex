@@ -1,0 +1,29 @@
+% Plantilla APA 7 sin afiliación
+% Usa XeLaTeX para Arial real o pdflatex con fuente similar
+\documentclass[man]{apa7}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage{csquotes}
+\usepackage[
+  backend=biber,
+  style=apa,
+  natbib=true
+]{biblatex}
+
+\addbibresource{referencias.bib}
+
+\title{Título en estilo APA 7}
+\author{Jorge Ayona}
+\email{jorge.ayona@estudiante.ucsm.edu.pe}
+\affiliation{} % Sin afiliación
+\date{23 de Mayo del 2025}
+
+\begin{document}
+\maketitle
+
+Texto con citas \parencite{autor2024}.
+
+\printbibliography
+\end{document}
+

@@ -1,0 +1,57 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{geometry}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, positioning}
+
+\geometry{a4paper, margin=2.5cm}
+
+\tikzset{
+  box/.style={
+    rectangle, draw=black, rounded corners,
+    minimum width=4.5cm, minimum height=1.5cm,
+    text centered, font=\small
+  },
+  arrow/.style={
+    thick, ->, >=stealth, shorten >=2pt, shorten <=2pt
+  }
+}
+
+\title{Mapa conceptual: Freud – Jung – San Pablo – Mi Camino Interior}
+\author{Jorge Ayona}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{center}
+\begin{tikzpicture}
+
+% Nodos con contenido en una sola línea
+\node[box, fill=red!20] (freud) at (0,0) {\shortstack{Freud\\Inconsciente = pulsiones reprimidas}};
+\node[box, fill=yellow!30] (jung) at (0,-3) {\shortstack{Jung\\Sombra = parte negada del alma}};
+\node[box, fill=green!25] (pablo) at (6,0) {\shortstack{San Pablo\\Hombre viejo / carne\\vs. Hombre nuevo en Cristo}};
+\node[box, fill=blue!20] (yo) at (0,-6) {\shortstack{Mi camino\\Integrar mi sombra, sanar,\\vivir en plenitud espiritual}};
+
+% Flechas con etiquetas
+\draw[arrow] (freud) -- (jung) node[midway, left] {Trasciende};
+\draw[arrow] (jung) -- (yo) node[midway, left] {Trabajo interior};
+\draw[arrow] (pablo) -- (yo) node[midway, right] {Gracia y redención};
+\draw[arrow] (freud) -- (pablo) node[midway, above] {Visiones opuestas};
+
+\end{tikzpicture}
+\end{center}
+
+\vspace{1em}
+
+\section*{Interpretación del mapa}
+
+\begin{itemize}
+  \item \textbf{Freud} representa una visión materialista y reduccionista del inconsciente.
+  \item \textbf{Jung} introduce el lenguaje de los símbolos, los arquetipos y la dimensión espiritual.
+  \item \textbf{San Pablo} ofrece una visión del alma redimida por gracia: del hombre viejo al nuevo en Cristo.
+  \item \textbf{Mi camino}: integrar la sombra con ayuda de la gracia, el símbolo y la conciencia plena.
+\end{itemize}
+
+\end{document}

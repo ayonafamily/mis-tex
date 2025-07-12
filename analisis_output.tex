@@ -1,0 +1,53 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{fontspec}
+\setmainfont{Arial}
+\usepackage{polyglossia}
+\setmainlanguage{spanish}
+\setotherlanguage[variant=ancient]{greek}
+\newfontfamily\greekfont[Script=Greek]{Linux Libertine O}
+\usepackage{geometry}
+\geometry{
+  top=1in,
+  bottom=1in,
+  left=1in,
+  right=1in
+}
+\usepackage[table]{xcolor}  % <-- Importante para colorear líneas de tabla
+\usepackage{array}
+\usepackage{tabularx}
+\geometry{margin=1in}
+\definecolor{verdelimon}{RGB}{154,205,50}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\arrayrulecolor{verdelimon}
+
+\begin{document}
+\section{Texto: \textgreek{ἐξορκίζω σε κατὰ τοῦ θεοῦ τοῦ ζῶντος}}
+
+\begin{tabularx}{\textwidth}{|Y|Y|Y|}
+\rowcolor{verdelimon}
+\hline
+\textcolor{white}{\textbf{Función sintáctica}} & \textcolor{white}{\textbf{Texto griego}} & \textcolor{white}{\textbf{Morfología}} \\
+\hline
+\hline
+Verbo principal & \textgreek{ἐξορκίζω} & Verbo \\
+\hline
+Complemento directo & \textgreek{σε} & Pronombre personal \\
+\hline
+Preposición + régimen & \textgreek{κατὰ} & Preposición que rige el genitivo. Indica invocación de autoridad: “por” \\
+\hline
+Término de la preposición & \textgreek{τοῦ θεοῦ} & Artículo + sustantivo \\
+\hline
+Epíteto calificativo & \textgreek{τοῦ ζῶντος} & Participio presente activo \\
+\hline \end{tabularx}
+
+\vspace{1cm}
+\arrayrulecolor{verdelimon}
+\begin{tabularx}{\textwidth}{|Y|}
+\hline
+\textbf{Traducción literal:} Te conjuro por el Dios viviente. \\
+\hline
+\textbf{Traducción en español fluido:} Te ordeno solemnemente en el nombre del Dios vivo. \\
+\hline
+\end{tabularx}
+\arrayrulecolor{black}
+\end{document}

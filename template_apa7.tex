@@ -1,0 +1,52 @@
+\documentclass[man]{apa7}  % Usa [stu] para versión estudiantil
+
+\usepackage[utf8]{inputenc}
+\usepackage[american]{babel}
+\usepackage{csquotes}
+\usepackage[
+style=apa,
+backend=biber,
+language=american
+]{biblatex}
+
+\addbibresource{referencias.bib}
+
+\title{Título del trabajo en APA 7}
+\shorttitle{Título corto}
+\author{Tu Nombre}
+\affiliation{Tu Universidad}
+\course{Nombre del Curso}
+\professor{Nombre del Profesor}
+\duedate{19 de mayo de 2025}
+
+\abstract{
+	Este es un ejemplo de resumen en formato APA 7. Aquí resumes el contenido de tu trabajo de forma concisa.
+}
+
+\keywords{APA, plantilla, LaTeX, TeXstudio, bibliografía}
+
+\begin{document}
+	
+	\maketitle
+	
+	\section{Introducción}
+	
+	Cita narrativa: \textcite{einstein1905}.
+	
+	Cita parentética: \parencite{einstein1905}.
+	
+	\section{Metodología}
+	Describe tus métodos aquí.
+	
+	\section{Resultados}
+	Presenta tus hallazgos.
+	
+	\section{Discusión}
+	Interpreta los resultados.
+	
+	\section{Conclusión}
+	Resumen final y futuras líneas de investigación.
+	
+	\printbibliography
+	
+\end{document}

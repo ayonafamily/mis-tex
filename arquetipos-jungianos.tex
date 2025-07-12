@@ -1,0 +1,49 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{geometry}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta, positioning}
+\geometry{a4paper, margin=2.5cm}
+
+\tikzset{
+  arquetipo/.style = {rectangle, rounded corners, minimum width=4.2cm, text width=4cm, align=center, minimum height=1.2cm, draw=black, fill=blue!10},
+  biblico/.style = {rectangle, rounded corners, minimum width=4.2cm, text width=4cm, align=center, minimum height=1.2cm, draw=black, fill=green!15},
+  arrow/.style = {thick, -Stealth}
+}
+
+\title{Arquetipos y Personajes Biblicos}
+\author{Jorge Ayona}
+
+
+\begin{document}
+\maketitle
+\begin{center}
+\begin{tikzpicture}[node distance=2.2cm and 6cm, % <--- aumentado el espacio horizontal
+                    every node/.style={align=center}]
+
+% Arquetipos Junguianos
+\node (self) [arquetipo] {Sí-mismo\\(Unidad del ser)};
+\node (shadow) [arquetipo, below of=self] {Sombra\\(Lo reprimido, negado)};
+\node (anima) [arquetipo, below of=shadow] {Ánima / Ánimus\\(Femineidad / Masculinidad interior)};
+\node (wise) [arquetipo, below of=anima] {Anciano Sabio\\(Guía interior)};
+\node (child) [arquetipo, below of=wise] {Niño Divino\\(Potencial y renacimiento)};
+
+% Figuras Bíblicas
+\node (cristo) [biblico, right=of self] {Cristo\\(Plenitud humana-divina)};
+\node (judas) [biblico, right=of shadow] {Judas / Fariseos\\(Negación y traición)};
+\node (maria) [biblico, right=of anima] {María\\(Ánima redimida, receptividad pura)}; % <-- Aquí "María" ya no se desborda
+\node (moises) [biblico, right=of wise] {Moisés\\(Guía del pueblo, sabiduría divina)};
+\node (jesuschild) [biblico, right=of child] {Niño Jesús\\(Esperanza y promesa)};
+
+% Conexiones
+\draw [arrow] (self) -- (cristo);
+\draw [arrow] (shadow) -- (judas);
+\draw [arrow] (anima) -- (maria);
+\draw [arrow] (wise) -- (moises);
+\draw [arrow] (child) -- (jesuschild);
+
+\end{tikzpicture}
+\end{center}
+
+\end{document}
